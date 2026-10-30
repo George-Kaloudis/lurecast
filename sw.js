@@ -1,5 +1,5 @@
 // LureCast offline shell: the app works offline; weather needs signal.
-const CACHE="lurecast-v2";
+const CACHE="lurecast-v3";
 const FILES=["./","./index.html","./manifest.webmanifest","./icon.svg","./icon-192.png","./icon-512.png"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x))))));
