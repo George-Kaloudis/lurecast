@@ -1,0 +1,705 @@
+<title>LureCast</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#0c2a33">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="LureCast">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one-thumb phone app. A sea-chart header with the live weather dial, then stacked screens; the buoy-orange accent marks the one thing to do next. */
+:root{
+  --bg:#eef3f2; --surface:#ffffff; --surface2:#e2ebea; --fg:#0f2328; --muted:#56706f; --line:#cfdcda;
+  --sea:#0c4b5a; --sea2:#0a3440; --buoy:#e8601c; --buoy-ink:#ffffff; --good:#1f8a4c; --warn:#b7791f; --bad:#c2402a;
+  --display:"Saira Condensed","Arial Narrow",sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#081a1f; --surface:#0f262d; --surface2:#15323a; --fg:#e4efee; --muted:#93acab; --line:#21424b;
+  --sea:#0e5466; --sea2:#062229; --buoy:#ff7a33; --buoy-ink:#1a0d05; --good:#4cc47f; --warn:#e3b04f; --bad:#f07a63; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#081a1f; --surface:#0f262d; --surface2:#15323a; --fg:#e4efee; --muted:#93acab; --line:#21424b;
+  --sea:#0e5466; --sea2:#062229; --buoy:#ff7a33; --buoy-ink:#1a0d05; --good:#4cc47f; --warn:#e3b04f; --bad:#f07a63; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.45;margin:0;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--sea2)}
+button{font:inherit;color:inherit}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 calc(32px + env(safe-area-inset-bottom,0px))}
+/* header */
+.top{background:linear-gradient(180deg,var(--sea2),var(--sea));color:#eaf6f5;border-radius:0 0 24px 24px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:14px max(16px,env(safe-area-inset-left,0px)) 18px;position:relative;overflow:hidden}
+.top::after{content:"";position:absolute;inset:auto 0 0 0;height:22px;opacity:.18;background:repeating-radial-gradient(circle at 50% 160%,transparent 0 10px,#fff 10px 11px,transparent 11px 22px)}
+.brand{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.brand .nm{display:flex;align-items:center;gap:10px}
+.brand h1{font-family:var(--display);font-weight:800;font-size:1.9rem;letter-spacing:.02em;margin:0;line-height:1}
+.brand h1 b{color:#ffb38a;font-weight:800}
+.iconbtn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:7px 10px;color:#eaf6f5;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:.85rem}
+.iconbtn:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:3px solid var(--buoy);outline-offset:2px}
+.loc{font-size:.85rem;opacity:.85;margin-top:8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.wx{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin-top:12px}
+.dial{width:112px;height:112px}
+.dial text{font-family:var(--mono);font-size:9px;fill:#cfe7e5}
+.wxgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;min-width:0}
+.wxv{font-family:var(--display);font-size:1.35rem;font-weight:700;line-height:1.05}
+.wxl{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;opacity:.75}
+.wxv small{font-family:var(--body);font-size:.75rem;font-weight:400;opacity:.85}
+.phase{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border-radius:999px;padding:3px 10px;font-size:.8rem}
+/* screens */
+.screen{display:flex;flex-direction:column;gap:16px;margin-top:18px}
+h2{font-family:var(--display);font-size:1.5rem;margin:0;line-height:1.1;text-wrap:balance}
+h3{font-family:var(--display);font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.btn{border:0;border-radius:14px;padding:16px 18px;font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;width:100%}
+.btn.primary{background:var(--buoy);color:var(--buoy-ink)}
+.btn.sea{background:var(--sea);color:#eaf6f5}
+.btn.ghost{background:var(--surface2);color:var(--fg);font-size:1.05rem;padding:12px}
+.btn.good{background:var(--good);color:#fff}
+.btn.small{font-size:1rem;padding:11px 12px}
+.row{display:flex;gap:10px}
+.row>*{flex:1;min-width:0}
+.big{display:grid;gap:12px}
+.bigbtn{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;text-align:left;padding:16px;border-radius:18px;border:0;cursor:pointer}
+.bigbtn .t{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1}
+.bigbtn .s{font-size:.88rem;opacity:.9}
+.bigbtn.a{background:var(--buoy);color:var(--buoy-ink)}
+.bigbtn.b{background:var(--sea);color:#eaf6f5}
+.links{display:flex;gap:10px}
+.links button{flex:1}
+/* selectors */
+.sel{display:flex;flex-direction:column;gap:8px}
+.sel .lbl{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.sel .lbl span{font-weight:700}
+.sel .lbl em{font-style:normal;font-size:.75rem;color:var(--muted);font-family:var(--mono)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 13px;cursor:pointer;font-size:.95rem;display:inline-flex;align-items:center;gap:6px}
+.chip[aria-pressed="true"]{background:var(--sea);border-color:var(--sea);color:#eaf6f5}
+.chip .auto{font-family:var(--mono);font-size:.62rem;background:var(--buoy);color:var(--buoy-ink);border-radius:4px;padding:0 4px}
+.compass{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:220px}
+.compass .chip{justify-content:center;padding:8px 0}
+.note{font-size:.85rem;color:var(--muted)}
+/* suggestion */
+.sug{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.sug .hd{background:var(--surface2);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.step{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.zone{font-family:var(--mono);font-size:.72rem;background:var(--sea);color:#eaf6f5;border-radius:6px;padding:2px 7px}
+.lureart{display:flex;justify-content:center;padding:6px 0 0}
+.lureart svg{width:min(320px,90%);height:auto}
+.sug .bd{padding:4px 16px 16px;display:flex;flex-direction:column;gap:12px}
+.lname{font-family:var(--display);font-size:1.75rem;font-weight:800;line-height:1.02;text-wrap:balance}
+.lmaker{color:var(--muted);font-size:.9rem}
+.colour{display:flex;align-items:center;gap:10px;background:var(--surface2);border-radius:12px;padding:8px 10px}
+.sw{width:34px;height:34px;border-radius:9px;flex:none;border:1px solid var(--line)}
+.colour b{display:block}
+.colour small{color:var(--muted)}
+.tech{font-family:var(--display);font-size:1.2rem;font-weight:700;color:var(--buoy)}
+ol.how{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
+.why{display:flex;flex-wrap:wrap;gap:6px}
+.why span{font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--muted)}
+.casts{display:flex;gap:8px;align-items:center;font-weight:700}
+.depthbar{display:flex;flex-direction:column;gap:2px;width:28px;flex:none}
+.depthbar i{height:9px;border-radius:3px;background:var(--surface2)}
+.depthbar i.on{background:var(--buoy)}
+.actions{display:grid;gap:10px}
+.quick{display:flex;flex-wrap:wrap;gap:8px}
+.tried{display:flex;flex-direction:column;gap:6px}
+.tried div{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--muted)}
+.tried .sw{width:16px;height:16px;border-radius:4px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--good);color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;z-index:20;max-width:calc(100% - 32px)}
+.warn{background:color-mix(in srgb,var(--warn) 18%,var(--surface));border:1px solid var(--warn);border-radius:12px;padding:10px 12px;font-size:.9rem}
+.boxlist{display:flex;flex-direction:column;gap:8px}
+.boxrow{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.boxrow .txt{flex:1;min-width:0}
+.boxrow .txt small{display:block;color:var(--muted)}
+.boxrow.lost{opacity:.5}
+.boxrow.lost .txt b{text-decoration:line-through}
+.mini svg{width:70px;height:auto}
+.boxrow{cursor:pointer}
+.tg{appearance:none;-webkit-appearance:none;width:46px;height:28px;border-radius:999px;background:var(--line);position:relative;flex:none;cursor:pointer;transition:background .15s}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .15s}
+.tg:checked{background:var(--good)}
+.tg:checked::after{transform:translateX(18px)}
+.tg:disabled{opacity:.4}
+.tg:focus-visible{outline:3px solid var(--buoy);outline-offset:2px}
+.sel .lbl h3{margin:0}
+.tag{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+input[type=search]{width:100%;font:inherit;padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg)}
+.moon{display:flex;align-items:center;gap:10px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.92rem}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;font-weight:700}
+@media (prefers-reduced-motion:no-preference){.sug{animation:pop .25s ease-out}@keyframes pop{from{transform:translateY(6px);opacity:.6}to{transform:none;opacity:1}}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="nm"><span id="logo"></span><h1>Lure<b>Cast</b></h1></div>
+      <button class="iconbtn" id="homeBtn" type="button" hidden>Home</button>
+    </div>
+    <div class="loc" id="loc">Finding you…</div>
+    <div class="wx" id="wx"></div>
+  </header>
+  <main id="app"></main>
+</div>
+
+<script>
+"use strict";
+/* ================= INVENTORY (from your Lure Inventory) =================
+   tags: nat = natural, brt = bright, drk = dark/silhouette, ctr = contrast (red head etc), glo = glows
+   sw: [back colour, belly colour] used to paint the lure drawings          */
+const C=(c,sw,tags,n=1,pat)=>({c,sw,tags,n,pat});
+const INV={
+ mag:{name:"Mag Minnow 125F",maker:"Yo-Zuri",fam:"minnow",w:28,len:125,buoy:"floating",cols:[C("Bronze",["#7a5a2a","#dcb76d"],["nat"]),C("Anchovy",["#3f5c6b","#d5dde0"],["nat"]),C("Pink / black",["#1b1b1f","#ff5fa2"],["ctr","drk"])]},
+ lance:{name:"Tide Minnow Lance 140S",maker:"DUO",fam:"minnow",w:26,len:140,buoy:"sinking",headwind:true,cols:[C("Pink back pearl",["#ff6fae","#f3efe6"],["brt"])]},
+ mommotti:{name:"Mommotti 190 S",maker:"Seaspin",fam:"minnow",w:34,len:190,buoy:"sinking",cols:[C("Bar",["#2f4b5a","#c9d3d6"],["nat"])]},
+ bu:{name:"Floating Long Casting Minnow",maker:"B&U",fam:"minnow",w:33.5,len:163,buoy:"floating",cols:[C("Luminous: silver, dark stripes, clear belly",["#7d838b","#eef1f3"],["nat","glo"],1,"stripes"),C("Black with blue",["#14171f","#3b6fd8"],["drk"]),C("Green",["#2f7d43","#cfe3c2"],["nat"]),C("Double blue",["#1d4fb8","#8fb4ff"],["nat"])]},
+ k5333:{name:"5333S Minnow",maker:"Kingdom",fam:"minnow",w:33,len:180,buoy:"slow-sinking",cols:[C("Chartreuse back, silver",["#c8e13a","#e6ebee"],["brt"]),C("Dark blue back, spotted sardine",["#1c2f5a","#d7dde3"],["nat"])]},
+ lingyue:{name:"Long Cast Minnow",maker:"LINGYUE",fam:"minnow",w:40,len:190,buoy:"unknown",cols:[C("Red head, plain silver",["#d8282a","#eef0f2"],["ctr"]),C("Red head, dark back, spotted silver",["#2a2e36","#e6eaee"],["ctr","nat"]),C("Blue back, silver",["#2b7ad8","#e6ecf2"],["nat"]),C("Yellow head, green back, spotted silver",["#1f7a5a","#e4eaee"],["nat"]),C("Yellow head, dark back, silver, orange belly",["#2a2e36","#ff8a5c"],["brt","ctr"])]},
+ temu45:{name:"Long-Distance Sinking Minnow",maker:"Temu",fam:"minnow",w:45,len:140,buoy:"sinking",cols:[C("Green rainbow holographic",["#2f9e6f","#b9f0d8"],["nat","brt"]),C("Silver, dark back, red throat",["#2a2f36","#e8ecef"],["nat"]),C("Red back, gold flank",["#b3262b","#e2b84a"],["brt"])]},
+ temu33:{name:"Ultra-Long Casting Minnow",maker:"Temu",fam:"minnow",w:33,len:110,buoy:"unknown",cols:[C("Pink / blue holographic",["#e566a8","#7fb3ff"],["brt"]),C("Red head, silver",["#d22b2b","#e9edf0"],["ctr"]),C("Silver, dark back",["#2b3138","#e6eaee"],["nat"]),C("White, orange tiger stripes",["#f08a24","#f7f4ee"],["brt"]),C("Pink rainbow",["#ff79b8","#ffe0f0"],["brt"])]},
+ surfwalker:{name:"Surf Walker",maker:"Savage Gear",fam:"pencil",w:41,len:210,buoy:"floating",cols:[C("Green-blue back, silver",["#2c7d86","#e6edf0"],["nat"])]},
+ needleF:{name:"Needle Pencil (floating)",maker:"Kingdom",fam:"needle",w:30,len:205,buoy:"floating",cols:[C("Black / silver",["#121417","#dfe4e8"],["drk"]),C("Pink",["#ff5ea8","#ffd6ea"],["brt"]),C("Green-blue / silver",["#2a8a84","#e2e9ec"],["nat"])]},
+ needleS:{name:"Needle Pencil (sinking)",maker:"Kingdom",fam:"needle",w:40,len:205,buoy:"sinking",cols:[C("Black / silver",["#121417","#dfe4e8"],["drk"]),C("Pink",["#ff5ea8","#ffd6ea"],["brt"]),C("Green-blue / silver",["#2a8a84","#e2e9ec"],["nat"])]},
+ pencil:{name:"Floating Pencil",maker:"Temu",fam:"pencil",w:32,len:150,buoy:"floating",cols:[C("Red head, white",["#d32626","#f6f6f2"],["ctr"]),C("Black back, white",["#16181c","#f4f4f0"],["drk"]),C("Pink head, white",["#ff5ea8","#f6f6f2"],["brt"]),C("Hot pink",["#ff2e93","#ff8cc4"],["brt"]),C("Yellow back, white",["#f2c516","#f6f6f2"],["brt"])]},
+ yzpop:{name:"3D Inshore Popper",maker:"Yo-Zuri",fam:"popper",w:45,len:120,buoy:"floating",cols:[C("Clear pearl, red throat",["#e4dfd2","#d43a3a"],["nat"])]},
+ kpop:{name:"Topwater Popper 5285",maker:"Kingdom",fam:"popper",w:36,len:130,buoy:"floating",rattle:true,cols:[C("Blue",["#1f5fc4","#cfe0ff"],["nat","drk"])]},
+ takami:{name:"Water Spray Popper",maker:"Takami",fam:"popper",w:16.6,len:85,buoy:"floating",cols:[C("Bright pink",["#ff3d9a","#ffc2df"],["brt"])]},
+ dmc:{name:"Drag Metal Cast",maker:"DUO",fam:"jig",w:40,len:60,cols:[C("Sardine",["#355e7e","#dfe6ec"],["nat"])]},
+ dmcs:{name:"Drag Metal Cast Slim",maker:"DUO",fam:"jig",w:40,len:82,cols:[C("Blue pink sardine",["#2f61b5","#ff8cc0"],["nat","brt"])]},
+ needlejig:{name:"3D Needle Jig",maker:"Savage Gear",fam:"jigslim",w:40,len:150,cols:[C("Pink flash glow",["#ff6fae","#e8ffe0"],["brt","glo"])]},
+ proberos:{name:"Luminous 3D Fast Jig",maker:"PROBEROS",fam:"jig",w:45,len:92,cols:[C("Yellow back, silver",["#f0c419","#e3e8ec"],["brt","glo"],2),C("Blue spotted sardine",["#2b5aa3","#dfe5ea"],["nat","glo"],2),C("Pink / purple",["#e35bb0","#8b5cf6"],["brt","glo"],2),C("Black and silver zebra",["#15171b","#d8dde2"],["drk","glo"],2),C("Blue / silver",["#2563c9","#e2e8ee"],["nat","glo"],2)]},
+ slimjig:{name:"Slim Metal Jig",maker:"Jigging Pro",fam:"jigslim",w:40,len:140,cols:[C("Luminous pink",["#ff7ab8","#f2fff0"],["brt","glo"]),C("Black streak",["#141619","#b9c1c8"],["drk"]),C("Blue",["#1f5fc4","#c9dcff"],["nat"])]},
+ slow3d:{name:"Slow Sinking 3D Jig",maker:"Unknown brand",fam:"jig",w:40,len:80,cols:[C("Blue-green back, silver",["#1f7f86","#e2e8ec"],["nat"]),C("Blue back, pink belly",["#2853b0","#ff8fc4"],["brt"]),C("Blue back, silver holo",["#2a5db8","#e8eef4"],["nat"]),C("Silver, pink-purple belly",["#c5ccd3","#b45ad1"],["brt"])]},
+ bm:{name:"Black Minnow No4",maker:"Fiiish",fam:"soft",w:50,len:140,soft:true,cols:[C("Khaki",["#6b6a3a","#c8c29a"],["nat"],2),C("Blue",["#2457b0","#c7d8f5"],["nat"],2),C("White (red head)",["#f4f4f0","#ffffff"],["brt","ctr"],2),C("Candy Green",["#1f6a3a","#d8f0a8"],["ctr","drk"],3),C("Fluo Orange UV",["#ff7a1a","#ffc08a"],["brt"],3),C("Rose Fluorescent",["#ff4fa0","#ffc0de"],["brt"],3),C("Silver Strike",["#8f9aa5","#eef2f5"],["nat"],3)]},
+ troll:{name:"Trolling Minnow 200",maker:"Temu",fam:"minnow",w:38,len:200,buoy:"sinking diver 0.5–1.5 m",boat:true,cols:[C("Blue",["#1f5fc4","#d8e6ff"],["nat"])]},
+ bm3:{name:"Black Minnow No3 (body only)",maker:"Fiiish",fam:"soft",w:6,len:120,soft:true,noHead:true,cols:[C("Khaki",["#6b6a3a","#c8c29a"],["nat"],2)]},
+ egi:{name:"Luminous Squid Jig 3.5#",maker:"Temu",fam:"egi",w:19,len:132,cols:[C("Lime green, orange bars",["#9be22b","#ff8a1f"],["brt"]),C("Blue rainbow, orange bars",["#2f6fd8","#ff8a1f"],["nat"]),C("Orange / yellow",["#ff8a1f","#ffd93a"],["brt"]),C("Pink / purple stripes",["#ff5ea8","#8b5cf6"],["brt"]),C("Green, orange bars",["#2f8a4a","#ff8a1f"],["nat"]),C("Orange",["#ff7a12","#ffb46a"],["brt"]),C("Blue",["#2a5fc2","#bcd2ff"],["nat"]),C("Pink, yellow belly",["#ff5ea8","#ffe04a"],["brt"]),C("Brown / orange natural",["#7a4a26","#e08a3a"],["nat"]),C("White, red-orange bars",["#f5f2ea","#ff5a2a"],["brt","night"])]}
+};
+const SPARES=[["Offshore jig head 40 g (No4)",2],["Search jig head 28 g (No4)",4],["Krog Premium hooks (No4)",8]];
+const FAMNAME={minnow:"Minnows",needle:"Needles",pencil:"Pencils",popper:"Poppers",jig:"Metal jigs",jigslim:"Slim jigs",soft:"Soft lures (bodies)",egi:"Squid jigs"};
+
+/* ================= STORAGE (per phone, best effort) ================= */
+const KEY="lurecast.v1";
+let store={off:[],loc:null,log:[]};
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s)store=Object.assign(store,s);}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}};
+if(store.missing){store.off=[...new Set([...(store.off||[]),...store.missing])];delete store.missing;}
+const isMissing=(k,c)=>store.off.includes(k+"|"+c)||!!INV[k].noHead;
+const avail=k=>(INV[k].boat&&COND.from!=="boat")?[]:INV[k].cols.filter(x=>!isMissing(k,x.c));
+const bringCount=()=>{let a=0,t=0;for(const k in INV)for(const c of INV[k].cols){t+=c.n;if(!store.off.includes(k+"|"+c.c))a+=c.n;}return [a,t];};
+
+/* ================= DRAWINGS ================= */
+let gid=0;
+function grad(sw){const id="g"+(++gid);return{id,def:`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sw[0]}"/><stop offset=".55" stop-color="${sw[0]}"/><stop offset=".62" stop-color="${sw[1]}"/><stop offset="1" stop-color="${sw[1]}"/></linearGradient>`};}
+const hook=(x,y)=>`<g stroke="#8a949c" stroke-width="2" fill="none" stroke-linecap="round"><path d="M${x} ${y} v10"/><path d="M${x} ${y+10} q-6 8 -10 2"/><path d="M${x} ${y+10} q6 8 10 2"/><path d="M${x} ${y+10} v8 q0 4 -4 3"/></g>`;
+function lureSVG(fam,sw,big,pat){
+  const g=grad(sw); const st=`stroke="var(--fg)" stroke-opacity=".25" stroke-width="1.5"`;
+  let body="";
+  if(fam==="minnow") body=`<path d="M30 60 q8 -10 30 0" fill="#cfe6ec" opacity=".7" ${st}/><path d="M50 60 C70 32 200 30 250 52 L272 40 L268 62 L272 84 L250 70 C200 92 70 90 50 60Z" fill="url(#${g.id})" ${st}/><circle cx="72" cy="56" r="7" fill="#fff"/><circle cx="73" cy="56" r="3.6" fill="#111"/>${hook(120,84)}${hook(205,80)}`;
+  else if(fam==="pencil"||fam==="needle") body=`<path d="M22 60 C40 46 230 44 268 56 L280 52 L280 68 L268 64 C230 76 40 74 22 60Z" fill="url(#${g.id})" ${st}/><circle cx="50" cy="57" r="5" fill="#fff"/><circle cx="51" cy="57" r="2.6" fill="#111"/>${hook(120,72)}${hook(240,68)}`;
+  else if(fam==="popper") body=`<path d="M58 40 L62 60 L58 80 C120 92 220 86 262 62 L274 52 L272 70 L262 58 C220 34 120 28 58 40Z" fill="url(#${g.id})" ${st}/><ellipse cx="58" cy="60" rx="8" ry="20" fill="var(--sea2)" opacity=".75"/><circle cx="84" cy="52" r="6" fill="#fff"/><circle cx="85" cy="52" r="3" fill="#111"/>${hook(130,84)}${hook(220,78)}`;
+  else if(fam==="jig") body=`<path d="M60 60 C80 34 210 36 240 56 L246 60 L240 64 C210 84 80 86 60 60Z" fill="url(#${g.id})" ${st}/><path d="M60 60 l-14 -6 v12z" fill="#8a949c"/><circle cx="84" cy="56" r="5" fill="#fff"/><circle cx="85" cy="56" r="2.5" fill="#111"/>${hook(250,62)}<path d="M40 60 q-10 12 -2 24" stroke="#c03" stroke-width="3" fill="none"/>`;
+  else if(fam==="jigslim") body=`<path d="M30 60 C50 48 240 46 276 58 L280 60 L276 62 C240 74 50 72 30 60Z" fill="url(#${g.id})" ${st}/><circle cx="52" cy="58" r="4" fill="#fff"/><circle cx="53" cy="58" r="2" fill="#111"/>${hook(282,60)}`;
+  else if(fam==="soft") body=`<path d="M40 60 C40 40 80 38 92 44 L92 76 C80 82 40 80 40 60Z" fill="#6b6a3a" ${st}/><path d="M92 44 C150 36 210 46 240 56 L246 38 L262 40 L254 60 L262 80 L246 82 L240 64 C210 74 150 84 92 76Z" fill="url(#${g.id})" ${st}/><circle cx="62" cy="56" r="7" fill="#fff"/><circle cx="63" cy="56" r="3.6" fill="#111"/><path d="M150 42 q-6 -16 8 -20" stroke="#8a949c" stroke-width="3" fill="none"/>`;
+  else if(fam==="egi") body=`<path d="M50 60 C60 40 200 38 236 52 L250 60 L236 68 C200 82 60 80 50 60Z" fill="url(#${g.id})" ${st}/><path d="M80 44 L58 22 L110 42Z M80 76 L58 98 L110 78Z" fill="url(#${g.id})" opacity=".9" ${st}/><circle cx="214" cy="56" r="6" fill="#fff"/><circle cx="215" cy="56" r="3" fill="#111"/><path d="M42 60 l-16 0" stroke="#666" stroke-width="3"/>${[0,1,2,3,4,5].map(i=>`<path d="M26 60 l-10 ${-12+i*5}" stroke="#ccc" stroke-width="1.6"/>`).join("")}<path d="M120 76 l-8 6 l-4 -8z" fill="#c0392b"/>`;
+  if(pat==="stripes") body=body.replace(/(<circle)/,`<g stroke="#2a2d33" stroke-width="1.6" opacity=".75">${[0,1,2,3,4].map(i=>`<path d="M${80} ${44+i*3.2} C140 ${38+i*3.2} 200 ${40+i*3.2} 246 ${52+i*1.2}" fill="none"/>`).join("")}</g>$1`);
+  return `<svg viewBox="0 0 300 120" role="img" aria-hidden="${big?"false":"true"}"><defs>${g.def}</defs>${body}</svg>`;
+}
+const swStyle=sw=>`background:linear-gradient(180deg,${sw[0]} 55%,${sw[1]} 62%)`;
+const LOGO=`<svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#e8601c"/><path d="M8 40 q6 -6 12 0 t12 0 t12 0 t12 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M36 10 v18 a8 8 0 1 1 -14 -5" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M22 23 l-3 6 l6 -1z" fill="#fff"/></svg>`;
+document.getElementById("logo").innerHTML=LOGO;
+const ICON={
+ sun:`<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#ffc94a"/><g stroke="#ffc94a" stroke-width="2" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></g></svg>`,
+ moon:`<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 1 1 9 4a6.5 6.5 0 0 0 11 11z" fill="#dfe8f0"/></svg>`,
+ dawn:`<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17a7 7 0 0 1 14 0z" fill="#ff9a4a"/><path d="M2 20h20" stroke="#cfe7e5" stroke-width="2"/></svg>`,
+ cloud:`<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1 0-8 6 6 0 0 1 11 2 3 3 0 0 1 0 6z" fill="#cfe0e6"/></svg>`
+};
+
+/* ================= WEATHER (Open-Meteo: free, no key, includes waves) ================= */
+let WX=null; // {temp,code,cloud,precip,wind,dir,gust,isDay,sunrise,sunset,now,trend,wave,wavePeriod,sst}
+let LOC=store.loc||null;
+const dirName=d=>["N","NE","E","SE","S","SW","W","NW"][Math.round(((d%360)+360)%360/45)%8];
+const beaufort=k=>{const b=[1,6,12,20,29,39,50,62,75,89,103,118];let i=0;while(i<b.length&&k>=b[i])i++;return i;};
+const WCODE={0:"Clear",1:"Mostly clear",2:"Partly cloudy",3:"Overcast",45:"Fog",48:"Fog",51:"Drizzle",53:"Drizzle",55:"Drizzle",61:"Rain",63:"Rain",65:"Heavy rain",80:"Showers",81:"Showers",82:"Heavy showers",95:"Thunderstorm",96:"Thunderstorm",99:"Thunderstorm"};
+
+async function getWeather(lat,lon){
+  const f=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,cloud_cover,precipitation,wind_speed_10m,wind_direction_10m,wind_gusts_10m,is_day&hourly=wind_speed_10m&forecast_hours=4&daily=sunrise,sunset&forecast_days=1&timezone=auto&wind_speed_unit=kmh`;
+  const m=`https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lon}&current=wave_height,wave_period,sea_surface_temperature&timezone=auto`;
+  const [a,b]=await Promise.allSettled([fetch(f).then(r=>r.ok?r.json():Promise.reject(r.status)),fetch(m).then(r=>r.ok?r.json():Promise.reject(r.status))]);
+  if(a.status!=="fulfilled") throw new Error("weather");
+  const j=a.value,cu=j.current;
+  const hs=(j.hourly&&j.hourly.wind_speed_10m)||[];
+  const trend=hs.length>2?(hs[hs.length-1]-hs[0]):0;
+  const out={temp:cu.temperature_2m,code:cu.weather_code,cloud:cu.cloud_cover,precip:cu.precipitation,wind:cu.wind_speed_10m,dir:cu.wind_direction_10m,gust:cu.wind_gusts_10m,isDay:cu.is_day,now:cu.time,sunrise:j.daily.sunrise[0],sunset:j.daily.sunset[0],trend};
+  if(b.status==="fulfilled"&&b.value.current&&b.value.current.wave_height!=null){const mc=b.value.current;out.wave=mc.wave_height;out.wavePeriod=mc.wave_period;out.sst=mc.sea_surface_temperature;}
+  return out;
+}
+function phaseOf(w){
+  const t=Date.now(),sr=new Date(w.sunrise).getTime(),ss=new Date(w.sunset).getTime(),H=3600e3;
+  if(t>=sr-H&&t<=sr+H) return "dawn";
+  if(t>=ss-H&&t<=ss+0.75*H) return "dusk";
+  if(t>sr+H&&t<ss-H) return "day";
+  return "night";
+}
+function localPhase(){const h=new Date().getHours();return h>=6&&h<8?"dawn":h>=8&&h<17?"day":h>=17&&h<19?"dusk":"night";}
+const PHASE={dawn:["Dawn",ICON.dawn],day:["Daytime",ICON.sun],dusk:["Dusk",ICON.dawn],night:["Night",ICON.moon]};
+function moon(){ // days into the synodic cycle
+  const d=(Date.now()-Date.UTC(2000,0,6,18,14))/864e5; const p=((d%29.530588)+29.530588)%29.530588;
+  const ill=Math.round((1-Math.cos(2*Math.PI*p/29.530588))/2*100);
+  const name=p<1.8?"New moon":p<7.4?"Waxing crescent":p<9.2?"First quarter":p<14?"Waxing gibbous":p<16?"Full moon":p<21.5?"Waning gibbous":p<23.3?"Last quarter":p<27.7?"Waning crescent":"New moon";
+  return {p,ill,name};
+}
+function moonSVG(ill,p){const waxing=p<14.77;const k=1-2*ill/100;return `<svg width="34" height="34" viewBox="-17 -17 34 34" aria-hidden="true"><circle r="15" fill="#22343a"/><path d="M0 -15 A15 15 0 0 ${waxing?1:0} 0 15 A${Math.abs(15*k)} 15 0 0 ${(k>0)===waxing?0:1} 0 -15Z" fill="#f2efe2"/></svg>`;}
+
+function renderWX(){
+  const el=document.getElementById("wx"),lc=document.getElementById("loc");
+  lc.innerHTML=`<span>📍</span><span>${LOC?esc(LOC.name):"No location yet"}</span><button class="iconbtn" type="button" id="relocate">Change</button><button class="iconbtn" type="button" id="refresh">Refresh</button>`;
+  document.getElementById("relocate").onclick=()=>show("where");
+  document.getElementById("refresh").onclick=()=>locate(true);
+  if(!WX){el.innerHTML=`<div class="note" style="color:#cfe7e5;grid-column:1/-1">${LOC?"Loading weather…":"Tap Change to set your spot, or allow location."}</div>`;return;}
+  const ph=phaseOf(WX),to=(WX.dir+180)%360,bf=beaufort(WX.wind);
+  const ticks=["N","E","S","W"].map((t,i)=>{const a=i*90*Math.PI/180;return `<text x="${56+Math.sin(a)*46}" y="${56-Math.cos(a)*46+3}" text-anchor="middle">${t}</text>`}).join("");
+  el.innerHTML=`<svg class="dial" viewBox="0 0 112 112" role="img" aria-label="Wind from ${dirName(WX.dir)} at ${Math.round(WX.wind)} km/h">
+    <circle cx="56" cy="56" r="38" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+    ${[...Array(16)].map((_,i)=>{const a=i*22.5*Math.PI/180;return `<line x1="${56+Math.sin(a)*34}" y1="${56-Math.cos(a)*34}" x2="${56+Math.sin(a)*38}" y2="${56-Math.cos(a)*38}" stroke="rgba(255,255,255,.35)"/>`}).join("")}
+    ${ticks}
+    <g transform="rotate(${to} 56 56)"><path d="M56 22 L64 40 L58 38 L58 84 L54 84 L54 38 L48 40Z" fill="#ff8a4a"/></g>
+    <circle cx="56" cy="56" r="15" fill="#06222a"/><text x="56" y="55" text-anchor="middle" style="font-size:12px;fill:#fff;font-weight:600">${Math.round(WX.wind)}</text><text x="56" y="65" text-anchor="middle" style="font-size:6.5px">km/h</text>
+  </svg>
+  <div class="wxgrid">
+    <div><div class="wxl">Wind from</div><div class="wxv">${dirName(WX.dir)} <small>${Math.round(WX.dir)}° · F${bf}</small></div></div>
+    <div><div class="wxl">Gusts</div><div class="wxv">${Math.round(WX.gust)} <small>km/h ${WX.trend>4?"↑ rising":WX.trend<-4?"↓ easing":"steady"}</small></div></div>
+    <div><div class="wxl">Waves</div><div class="wxv">${WX.wave!=null?WX.wave.toFixed(1)+" m":"—"} <small>${WX.wavePeriod?Math.round(WX.wavePeriod)+" s":""}</small></div></div>
+    <div><div class="wxl">Air / sea</div><div class="wxv">${Math.round(WX.temp)}° <small>${WX.sst!=null?"sea "+Math.round(WX.sst)+"°":""}</small></div></div>
+    <div style="grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap;margin-top:2px"><span class="phase">${PHASE[ph][1]} ${PHASE[ph][0]}</span><span class="phase">${WX.cloud>65?ICON.cloud:ICON.sun} ${WCODE[WX.code]||"Cloud "+WX.cloud+"%"}</span><span class="phase">☀ ${WX.sunrise.slice(11)} – ${WX.sunset.slice(11)}</span></div>
+  </div>`;
+}
+async function loadWX(){
+  if(!LOC){renderWX();return;}
+  renderWX();
+  try{WX=await getWeather(LOC.lat,LOC.lon);}catch(e){WX=null;toast("Couldn't load weather — set conditions by hand",true);}
+  renderWX(); autoFill(); if(view==="home"||view==="setup"||view==="egisetup") rerender();
+}
+function locate(force){
+  if(!navigator.geolocation){if(!LOC)show("where");return;}
+  document.getElementById("loc").textContent="Getting GPS fix…";
+  navigator.geolocation.getCurrentPosition(async p=>{
+    const lat=+p.coords.latitude.toFixed(4),lon=+p.coords.longitude.toFixed(4);
+    LOC={lat,lon,name:`GPS ${lat.toFixed(3)}, ${lon.toFixed(3)}`};store.loc=LOC;save();loadWX();
+  },()=>{ if(LOC){loadWX();} else {renderWX();show("where");} },{enableHighAccuracy:true,timeout:12000,maximumAge:force?0:300000});
+}
+
+/* ================= CONDITIONS ================= */
+const COND={from:"shore",phase:null,sky:null,wind:null,face:"?",bottom:"?",depth:"?",clarity:"?",surface:null,birds:"none",fish:"none"};
+const AUTO={};
+const MANUAL={};
+const AUTOKEYS=["phase","sky","wind","surface"];
+function autoFill(){
+  if(WX){AUTO.phase=phaseOf(WX);AUTO.sky=WX.cloud>65||WX.precip>0?"cloud":"sun";AUTO.wind=WX.wind<10?"calm":WX.wind<25?"mod":WX.wind<40?"strong":"gale";
+    AUTO.surface=WX.wave==null?null:WX.wave<.25?"flat":WX.wave<.6?"ripple":WX.wave<1.2?"wavy":"foamy";}
+  else{AUTO.phase=localPhase();}
+  for(const k of ["phase","sky","wind","surface"]) if(!MANUAL[k]&&AUTO[k]) COND[k]=AUTO[k];
+}
+function windRel(){
+  if(!WX||COND.face==="?") return "?";
+  const f={N:0,NE:45,E:90,SE:135,S:180,SW:225,W:270,NW:315}[COND.face];
+  let d=Math.abs(((WX.dir-f)%360+540)%360-180);
+  return d<=60?"on":d>=120?"off":"cross";
+}
+const SELECTORS=[
+ {k:"phase",t:"Light",o:[["dawn","Dawn"],["day","Day"],["dusk","Dusk"],["night","Night"]]},
+ {k:"sky",t:"Sky",o:[["sun","Sunny"],["cloud","Overcast / rain"]]},
+ {k:"wind",t:"Wind",o:[["calm","Calm"],["mod","Breezy"],["strong","Strong"],["gale","Very strong"]]},
+ {k:"face",t:"The sea is to my…",compass:true},
+ {k:"bottom",t:"Bottom",o:[["sand","Sand"],["rocks","Rocks"],["weed","Weed / seagrass"],["mixed","Mixed"],["?","Unknown"]]},
+ {k:"depth",t:"Depth in front of me",o:[["shallow","Shallow <2 m"],["medium","2–6 m"],["deep","Deep 6 m+"],["?","Unknown"]]},
+ {k:"clarity",t:"Water",o:[["clear","Clear"],["tint","A bit coloured"],["murky","Murky"],["?","Unknown"]]},
+ {k:"surface",t:"Surface",o:[["flat","Flat calm"],["ripple","Ripple"],["wavy","Wavy"],["foamy","Foamy / breaking"]]},
+ {k:"birds",t:"Birds",o:[["none","None"],["some","Around"],["diving","Diving"]]},
+ {k:"fish",t:"Fish signs",o:[["none","Nothing"],["bait","Bait in close"],["boils","Fish busting"]]},
+ {k:"from",t:"Fishing from",o:[["shore","Shore"],["boat","Boat"]]}
+];
+function selHTML(s){
+  const cur=COND[s.k];
+  if(s.compass){const r=windRel();const lab={on:"wind blowing onshore (in your face)",off:"wind blowing offshore (at your back)",cross:"crosswind","?":"tap the direction you're casting"}[r];
+    const cells=["NW","N","NE","W","?","E","SW","S","SE"];
+    return `<div class="sel"><div class="lbl"><span>${s.t}</span><em>${lab}</em></div><div class="compass">${cells.map(c=>`<button type="button" class="chip" data-k="face" data-v="${c}" aria-pressed="${cur===c}">${c==="?"?"Skip":c}</button>`).join("")}</div></div>`;}
+  return `<div class="sel"><div class="lbl"><span>${s.t}</span>${AUTO[s.k]?(MANUAL[s.k]?`<button type="button" class="chip" data-reauto="${s.k}" style="padding:3px 10px;font-size:.78rem">Set by you · back to auto</button>`:`<em>${s.k==="phase"?"follows sunrise & sunset":"auto from weather"}</em>`):""}</div><div class="chips">${s.o.map(([v,l])=>`<button type="button" class="chip" data-k="${s.k}" data-v="${v}" aria-pressed="${cur===v}">${l}${AUTO[s.k]===v?'<span class="auto">AUTO</span>':""}</button>`).join("")}</div></div>`;
+}
+function bindChips(root,after){
+  root.querySelectorAll(".chip[data-k]").forEach(b=>b.onclick=()=>{const k=b.dataset.k;COND[k]=b.dataset.v;if(AUTOKEYS.includes(k))MANUAL[k]=(AUTO[k]!==b.dataset.v);after?after():rerender();});
+  root.querySelectorAll("[data-reauto]").forEach(b=>b.onclick=()=>{const k=b.dataset.reauto;delete MANUAL[k];autoFill();after?after():rerender();});
+}
+
+/* ================= LURE ENGINE ================= */
+function feats(){
+  const c=COND,ph=c.phase||localPhase();
+  return {ph,low:ph!=="day",night:ph==="night",twi:ph==="dawn"||ph==="dusk",cloud:c.sky==="cloud",
+    calm:c.surface==="flat"||c.surface==="ripple",flat:c.surface==="flat",rough:c.surface==="wavy"||c.surface==="foamy",foamy:c.surface==="foamy",
+    windy:c.wind==="strong"||c.wind==="gale",gale:c.wind==="gale",rel:windRel(),
+    sand:c.bottom==="sand",rocks:c.bottom==="rocks",weed:c.bottom==="weed",mixed:c.bottom==="mixed",ub:c.bottom==="?",
+    shallow:c.depth==="shallow",medium:c.depth==="medium",deep:c.depth==="deep",
+    clear:c.clarity==="clear",murky:c.clarity==="murky",tint:c.clarity==="tint",
+    birds:c.birds!=="none",diving:c.birds==="diving",bait:c.fish==="bait",boils:c.fish==="boils",
+    gusty:!!WX&&(WX.gust>=45||WX.gust-WX.wind>=20),rising:!!WX&&WX.trend>4,easing:!!WX&&WX.trend<-4,
+    cold:!!WX&&WX.sst!=null&&WX.sst<16,warm:!!WX&&WX.sst!=null&&WX.sst>24};
+}
+const ZONES={top:[1,0,0,0],upper:[1,1,0,0],mid:[0,1,1,0],bottom:[0,0,1,1],fast:[1,1,0,0]};
+const ZNAME={top:"SURFACE",upper:"TOP 1 M",mid:"MID-WATER",bottom:"BOTTOM",fast:"FAST, HIGH"};
+const T=[
+ {id:"pop",title:"Stop-and-pop",zone:"top",lures:["yzpop","kpop","takami"],casts:"6–8 casts, fan left to right",
+  how:["Let it sit after landing until the rings fade.","One short, sharp downward snap of the rod tip (20–30 cm) — it should spit and splash.","Wind in the slack, pause 1–3 s. Repeat all the way in.","Fish chasing? Speed up: a pop every half second, no pauses."],
+  score:f=>4+(f.calm?2:0)-(f.rough?1:0)+(f.twi?2:0)-(f.night?3:0)+(f.cloud?1:0)+(f.birds?2:0)+(f.boils?2:0)+((f.shallow||f.rocks||f.weed)?1:0)+(f.murky?1:0),
+  adj:{takami:f=>(f.rough?-4:0)+(f.windy?-3:0)+(f.flat?1:0),kpop:f=>(f.low||f.murky?1:0),yzpop:f=>(f.rough?1:0)},
+  why:f=>[f.calm&&"calm surface carries the sound",f.twi&&"low light: fish look up",(f.birds||f.boils)&&"fish showing on top",f.murky&&"noise helps in coloured water"]},
+ {id:"wtd",title:"Walk-the-dog",zone:"top",lures:["pencil","surfwalker"],casts:"6–8 casts",
+  how:["Rod tip pointed down at the water.","Steady twitch-twitch-twitch of the tip, giving a little slack after each — the head swings left, right, left.","About half a reel turn per twitch.","Fish swirls but misses? Don't stop — keep it walking."],
+  score:f=>4+(f.calm?2:0)-(f.rough?2:0)+(f.twi?2:0)-(f.night?2:0)+(f.boils?3:0)+(f.birds?2:0)+(f.clear?1:0),
+  adj:{surfwalker:f=>(f.rough?2:0)+(f.boils?1:0)},
+  alt:{surfwalker:["Surf Walker trick: rod tip high and a fast wind makes it skip across the top like fleeing bait."]},
+  why:f=>[f.calm&&"surface is calm enough to walk",f.boils&&"fish busting on top",f.clear&&"silent lure for clear water"]},
+ {id:"wake",title:"Surface wake",zone:"top",lures:["needleF"],casts:"6–8 casts",
+  how:["Rod tip high, 10–11 o'clock.","Slow-to-medium steady wind so the nose rides out of the water and leaves a V-wake — a garfish on the surface.","Diving? Wind faster. Skating? Slow down."],
+  score:f=>3+(f.calm?2:0)+(f.low?2:0)+(f.clear?1:0)-(f.rough?2:0)+(f.bait?1:0),
+  why:f=>[f.low&&"bluefish and leerfish hunt garfish in low light",f.calm&&"calm water shows the wake"]},
+ {id:"floatmin",title:"Slow wind, then twitch-pause",zone:"upper",lures:["mag","bu"],casts:"8–10 casts, cover the shallows",
+  how:["Steady slow wind — just fast enough to feel the wobble in the rod tip.","Every 5–6 turns: two or three sharp twitches, then stop 1–2 s.","On the stop it floats up — that's when it gets hit.","Keep winding through taps; don't strike."],
+  score:f=>4+(f.shallow?2:0)+((f.rocks||f.weed)?2:0)+(f.low?2:0)+(f.rough?1:0)+(f.rel==="on"?1:0)+(f.bait?1:0),
+  adj:{bu:f=>(f.night?2:0),mag:f=>(f.rel==="on"&&f.windy?-2:0)},
+  why:f=>[f.shallow&&"shallow water: stays above snags",(f.rocks||f.weed)&&"floats up out of rock and weed on the pause",f.low&&"prime time for minnows",f.rough&&"minnows work well in white water"]},
+ {id:"sinkmin",title:"Count down, steady wind",zone:"upper",lures:["lance","k5333","temu33","lingyue"],casts:"8–10 casts, change the count every 2 casts",
+  how:["Cast, close the bail, count while it sinks (start with 3).","Steady medium wind, with a twitch every few seconds.","Next casts: count 5, then 8, to search deeper.","Get a hit? Remember the count and repeat it."],
+  score:f=>4+(f.windy?2:0)+(f.rough?1:0)+((f.medium||f.deep)?1:0)+(f.ph==="day"?1:0)+(f.ub?1:0),
+  adj:{lance:f=>(f.rel==="on"&&f.windy?3:0)+(f.clear?1:0),lingyue:f=>-1,temu33:f=>(f.bait?1:0)},
+  alt:{lingyue:["First time? Drop it at your feet: if it floats, fish it like a floating minnow and tell the Lure box."],lance:["Built for headwinds: three tungsten balls keep it flying straight into the wind."]},
+  why:f=>[f.windy&&"heavy enough to cast into the wind",f.rough&&"runs under the chop",(f.medium||f.deep)&&"searches the first couple of metres"]},
+ {id:"jerk",title:"Long jerk",zone:"upper",lures:["mommotti","k5333"],casts:"8 casts",
+  how:["Count 2–3, then two hard rod jerks to the side — the lure darts wide left and right.","Wind in the slack, pause 1–2 s.","Mix speeds: sometimes three jerks, sometimes a steady wind.","Made for barracuda, bluefish and bass in the top metre."],
+  score:f=>3+(f.ph==="day"?1:0)+(f.twi?1:0)+(f.clear?1:0)+(f.calm?1:0)+(f.rocks?1:0),
+  why:f=>[f.clear&&"clear water: fish react to a darting lure",f.twi&&"barracuda feed at dusk"]},
+ {id:"sneedle",title:"Sinking needle S-swim",zone:"mid",lures:["needleS"],casts:"6–8 casts",
+  how:["Count it down 3–10 s.","Steady medium-fast wind, rod at 45° — it swims a tight S just under the surface.","Fish swirled at the floating needle? Same colour, count 5."],
+  score:f=>3+(f.rough?1:0)+(f.ph==="day"?1:0)+(f.clear?1:0)+((f.medium||f.deep)?1:0)+(f.windy?1:0),
+  why:f=>[f.rough&&"stays under the chop",f.clear&&"slim natural profile"]},
+ {id:"burn",title:"Burn it",zone:"fast",lures:["dmc","dmcs","proberos","temu45"],casts:"Cast at the action, 10+ casts",
+  how:["Cast as far as you can — beyond the activity, not into it.","Count 2–5, then wind as fast as you can.","Every 10 turns, one sharp stop of half a second.","For bonito, little tunny, mackerel and bluefish chasing bait."],
+  score:f=>2+(f.boils?5:0)+(f.diving?4:f.birds?2:0)+(f.windy?1:0)+(f.ph==="day"?1:0)+(f.deep?1:0)-(f.night?1:0),
+  adj:{temu45:f=>(f.boils?1:0)},
+  why:f=>[f.boils&&"fish busting on top",f.diving&&"diving birds = bait being pushed up",f.windy&&"metals cut through wind"]},
+ {id:"jwp",title:"Jerk–jerk–wind–pause",zone:"mid",lures:["proberos","dmc","dmcs","slow3d"],casts:"8 casts",
+  how:["Count it to mid-depth (half the count to bottom).","Two sharp rod lifts, then 3–4 fast turns.","Let it flutter back 1–2 s, keeping light tension — most hits come on the drop.","Repeat all the way in."],
+  score:f=>3+(f.deep?1:0)+(f.medium?1:0)+(f.ph==="day"?1:0)+(f.bait?1:0)+(f.windy?1:0),
+  adj:{proberos:f=>(f.low?1:0)},
+  alt:{proberos:["Glow jig: charge it with your phone torch for 10 s before casting."]},
+  why:f=>[f.deep&&"deep water in front",f.bait&&"bait about: imitates a fleeing fish"]},
+ {id:"liftdrop",title:"Lift-and-drop on the bottom",zone:"bottom",lures:["slimjig","slow3d","needlejig"],casts:"6–8 casts, fan the area",
+  how:["Count it to the bottom and remember the number.","Lift the rod smoothly to 11 o'clock.","Drop the tip while winding in slack so it flutters down — watch the braid for a tick or sudden slack.","Over rock: stop a count or two before bottom."],
+  score:f=>3+(f.deep?3:0)+(f.medium?1:0)-(f.shallow?3:0)+(f.rocks?1:0)+(f.sand?1:0)+(f.calm?1:0)+(f.ph==="day"?1:0)-(f.weed?2:0),
+  adj:{needlejig:f=>(f.low?1:0)},
+  alt:{needlejig:["Slack line = slow flat fall; slight tension = fast drop in current."]},
+  why:f=>[f.deep&&"deep edge: fish hold low",f.calm&&"low swell: the slow flutter shows well",(f.rocks||f.sand)&&"hard bottom to work along"]},
+ {id:"troll",title:"Troll behind the boat",zone:"mid",lures:["troll","temu45","mag","bu"],casts:"20–30 min per run",
+  how:["Let it out 20–40 m behind the boat at walking pace (2–4 knots).","Rod in the holder or in hand, drag set light.","Zig-zag along rocky points and drop-offs, not straight lines.","Every few minutes, sweep the rod forward and drop it back — the lure surges and stalls."],
+  score:f=>COND.from==="boat"?(6+(f.low?1:0)+(f.birds?2:0)):-99,
+  adj:{troll:f=>2},
+  why:f=>["from the boat: cover lots of water",f.birds&&"birds working: troll around the edge, not through"]},
+ {id:"bmscratch",title:"Scratch the bottom",zone:"bottom",lures:["bm"],head:"search",casts:"6–8 casts along channels",
+  how:["Cast along a sand channel between rocks or the foot of a rock wall.","Let it touch down, rod low.","Wind very slowly so it just bumps along — weedless, so don't fear snags.","Heavy thump: wind fast and lift firmly."],
+  score:f=>3+(f.sand?3:0)+(f.mixed?2:0)+((f.shallow||f.medium)?1:0)+(f.weed?1:0)+(f.rocks?1:0)-(f.deep?1:0)+(f.ub?1:0),
+  why:f=>[f.sand&&"sand channels hold bottom feeders",f.mixed&&"weedless through mixed ground",f.ub&&"good way to learn the bottom"]},
+ {id:"bmlift",title:"Soft-lure lift-and-drop",zone:"bottom",lures:["bm"],head:"offshore",casts:"6–8 casts",
+  how:["Let it hit the bottom.","Smooth lift of 1–1.5 m, then follow it down on a tight-ish line — the tail thumps on the fall.","Hits are a heavy knock on the drop.","Set the hook hard to pull it through the body."],
+  score:f=>3+(f.deep?2:0)+(f.rocks?2:0)+(f.medium?1:0)-(f.shallow?2:0),
+  why:f=>[f.rocks&&"weedless over rock",f.deep&&"40 g head reaches the bottom fast"]},
+ {id:"bmswim",title:"Slow soft-lure swim",zone:"mid",lures:["bm"],head:"offshore",casts:"8 casts",
+  how:["Count it to mid-water.","Slow steady wind — just fast enough to feel the tail thump in the rod.","Every few metres, stop 1 s and let it sink a little."],
+  score:f=>3+(f.murky?1:0)+(f.low?1:0)+(f.night?1:0)+(f.weed?1:0)+(f.rough?1:0),
+  why:f=>[f.murky&&"tail vibration finds fish in coloured water",f.low&&"sea bass patrol rock edges in low light"]}
+];
+function wantTags(f){
+  const w={nat:0,brt:0,drk:0,ctr:0,glo:0};
+  if(f.night){w.glo+=3;w.drk+=3;w.ctr+=1;}
+  else if(f.twi){w.brt+=2;w.ctr+=2;w.nat+=1;if(f.ph==="dusk")w.glo+=1;}
+  else if(f.cloud){w.brt+=2;w.nat+=2;w.ctr+=1;}
+  else{w.nat+=3;w.ctr+=1;}
+  if(f.murky){w.brt+=2;w.drk+=2;w.nat-=1;}
+  if(f.tint){w.brt+=1;w.ctr+=1;}
+  if(f.foamy){w.brt+=1;w.drk+=1;w.ctr+=1;}
+  if(f.clear&&!f.low){w.nat+=1;w.brt-=1;}
+  return w;
+}
+const TAGTXT={nat:"natural colour for clear, bright water",brt:"bright colour stands out",drk:"dark silhouette shows against the sky",ctr:"high-contrast colour",glo:"glow colour for low light"};
+function pickColour(k,f,used){
+  const w=wantTags(f),cols=avail(k);if(!cols.length)return null;
+  let best=null,bs=-1e9;
+  for(const col of cols){const s=col.tags.reduce((a,t)=>a+(w[t]||0),0)-3*(used[k+"|"+col.c]||0);if(s>bs){bs=s;best=col;}}
+  const top=best.tags.reduce((a,t)=>(w[t]||0)>(w[a]||0)?t:a,best.tags[0]);
+  return {col:best,reason:TAGTXT[top]};
+}
+const WINDPENALTY=k=>INV[k].w<30&&!INV[k].headwind;
+
+/* session state */
+let S=null;
+function newSession(mode){S={mode,tried:{},used:{},hist:[],cur:null,step:0,start:Date.now()};wake();}
+const SLOW=["liftdrop","bmscratch","bmlift","bmswim","jwp"],SINK=["sinkmin","sneedle","jwp","liftdrop","bmlift","bmswim","burn"];
+function envAdj(t,k,f){
+  let d=0;const r=[],top=t.zone==="top"||t.id==="floatmin",light=INV[k].w<30;
+  if(f.rel==="off"){ if(top){d+=f.windy?2:1;r.push("wind at your back: calmer water close in and long casts with light lures");} if(light&&f.windy)d+=1; }
+  if(f.rel==="cross"&&f.windy){ if(top||t.id==="wake"){d-=1;} if(SINK.includes(t.id)){d+=1;r.push("crosswind bows the line: a sinking lure keeps contact");} }
+  if(f.gusty){ if(light){d-=2;} if(t.zone==="top"){d-=1;} if(INV[k].w>=40){d+=1;r.push("gusty: heavy lure casts straight through the gusts");} }
+  if(f.rising&&SINK.includes(t.id)&&t.id!=="liftdrop"){d+=1;r.push("wind is building: fish often switch on as the sea livens up");}
+  if(f.easing&&t.zone==="top"){d+=1;r.push("wind is dropping: the surface is calming down");}
+  if(f.cold){ if(SLOW.includes(t.id)){d+=2;r.push("cool sea: fish want it slow and deep");} if(t.id==="burn"||t.id==="pop"){d-=1;} }
+  if(f.warm&&t.zone==="top"&&f.twi){d+=1;r.push("warm sea: surface feeding at first and last light");}
+  return {d,r};
+}
+function candidates(f){
+  const out=[];
+  for(const t of T) for(const k of t.lures){
+    if(!avail(k).length) continue;
+    let s=t.score(f)+((t.adj&&t.adj[k])?t.adj[k](f):0);
+    if(f.rel==="on"&&f.windy&&WINDPENALTY(k)) s-=2;
+    if(f.gale&&INV[k].w<30) s-=2;
+    s+=envAdj(t,k,f).d;
+    out.push({t,k,s});
+  }
+  return out;
+}
+function nextSuggestion(mode){ // mode: "next" | "follow"
+  const f=feats(),last=S.cur;let list=candidates(f);
+  list.forEach(o=>{const key=o.t.id+"/"+o.k,n=S.tried[key]||0;o.r=o.s-4.5*n;
+    if(last){ if(mode==="follow"){ if(o.t.zone===last.t.zone)o.r+=4; if(INV[o.k].fam===INV[last.k].fam)o.r+=1; }
+              else { if(o.t.zone===last.t.zone)o.r-=2.5; if(INV[o.k].fam===INV[last.k].fam)o.r-=2; if(o.t.id===last.t.id)o.r-=2; } }});
+  if(mode==="follow"&&last){ // same lure, fresh colour first
+    const other=avail(last.k).filter(c=>c.c!==last.col.c);
+    if(other.length){const used=Object.assign({},S.used);used[last.k+"|"+last.col.c]=9;const pc=pickColour(last.k,f,used);
+      return build(last.t,last.k,f,pc,["Same lure, new colour — fish were interested","Try a slower retrieve with longer pauses"]);}
+  }
+  list.sort((a,b)=>b.r-a.r);
+  const o=list[0]; if(!o) return null;
+  return build(o.t,o.k,f,pickColour(o.k,f,S.used),[]);
+}
+function build(t,k,f,pc,extra){
+  const reasons=[...extra,...t.why(f).filter(Boolean)];
+  if(pc&&pc.reason) reasons.push(pc.reason);
+  if(f.rel==="on"&&f.windy&&INV[k].w>=35) reasons.push("heavy enough for the onshore wind");
+  reasons.splice(extra.length,0,...envAdj(t,k,f).r);
+  const s={t,k,col:pc&&pc.col,reasons:[...new Set(reasons)].slice(0,4)};
+  if(INV[k].soft){ s.head=t.head==="search"?{n:"Search head 28 g",why:"rides tilted above the bottom — for scratching and snaggy shallows"}:{n:"Offshore head 40 g",why:"swims on the drop and the rise — for deeper water and lift-and-drop"}; }
+  return s;
+}
+function takeSuggestion(s){S.cur=s;S.step++;const key=s.t.id+"/"+s.k;S.tried[key]=(S.tried[key]||0)+1;if(s.col)S.used[s.k+"|"+s.col.c]=(S.used[s.k+"|"+s.col.c]||0)+1;}
+
+/* ================= EGING ================= */
+const EGI_STEPS=[
+ {title:"Snap and fall",how:["Cast and let it sink to just above the bottom (about 3 s per metre with a 3.5#). Don't let it sit on weed.","Pick up slack and lift gently once — a squid may already be on.","Two or three sharp upward snaps of the rod tip.","Let it fall on a semi-slack line for 5–8 s and watch the braid: a twitch, a stop or early slack is a squid.","Repeat 3–5 times back to your feet."]},
+ {title:"Long fall",how:["Same cast and count.","One big upward sweep instead of short snaps.","Let it fall for 8–12 s — slow squid need time to commit.","Very slight tension so you feel the touch."]},
+ {title:"Mid-water search",how:["Count it down only halfway to the bottom.","Three soft snaps, then a slow fall of 4–5 s.","Squid often hunt mid-water at night and around lights."]},
+ {title:"Slow bottom drag",how:["Let it touch the bottom.","Drag it slowly 1 m with a side sweep, pause 5 s.","Cuttlefish and octopus love this — keep steady pressure if you feel weight."]},
+ {title:"Move along",how:["Walk 10–20 m along the rocks or the harbour wall.","Fan 5 casts: left, half-left, straight, half-right, right.","Back to 'Snap and fall' on each cast."]}
+];
+function egiColour(f,used){
+  const m=moon(),dark=f.night&&m.ill<40;
+  const w={nat:0,brt:0,night:0};
+  if(f.night){ if(dark){w.night+=3;w.brt+=1;} else {w.nat+=2;w.night+=1;} }
+  else if(f.twi||f.cloud){w.brt+=3;w.nat+=1;}
+  else {w.nat+=3;}
+  if(f.murky){w.brt+=3;w.nat-=1;}
+  let best=null,bs=-1e9;
+  for(const col of avail("egi")){const s=col.tags.reduce((a,t)=>a+(w[t]||0),0)-3*(used["egi|"+col.c]||0)+Math.random()*.1;if(s>bs){bs=s;best=col;}}
+  const why=f.night?(dark?"dark night: light colour + glow, charge it with your torch":"moonlit night: natural colour, charge the glow"):(f.twi||f.cloud)?"low light: orange or pink shows best":f.murky?"coloured water: bright colour":"bright clear day: natural colour";
+  return {col:best,why};
+}
+function egiNext(colourChange){
+  const f=feats();
+  // new colour restarts the cadence cycle; otherwise move to the next cadence, new colour each full cycle
+  const idx=(!S.cur||colourChange)?0:(S.egiIdx+1)%EGI_STEPS.length;
+  const needColour=!S.cur||colourChange||idx===0;
+  const pc=needColour?egiColour(f,S.used):{col:S.cur.col,why:S.cur.why};
+  S.egiIdx=idx;S.step++;S.cur={egi:true,step:EGI_STEPS[idx],col:pc.col,why:pc.why};
+  if(needColour&&pc.col)S.used["egi|"+pc.col.c]=(S.used["egi|"+pc.col.c]||0)+1;
+}
+
+/* ================= VIEWS ================= */
+let view="home";
+const app=document.getElementById("app");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function show(v){view=v;document.getElementById("homeBtn").hidden=(v==="home");rerender();window.scrollTo({top:0});}
+document.getElementById("homeBtn").onclick=()=>{if(S&&S.cur&&(view==="session"||view==="egi")){S.paused=true;}show("home");};
+function rerender(){({home:vHome,where:vWhere,setup:vSetup,session:vSession,egisetup:vEgiSetup,egi:vEgi,box:vBox,log:vLog})[view]();}
+
+function vHome(){
+  const resume=S&&S.cur;
+  app.innerHTML=`<section class="screen">
+   <div class="big">
+    <button class="bigbtn a" id="goFish" type="button"><span>${lureSVG("minnow",["#0c2a33","#ffffff"])}</span><span><span class="t">Start fishing</span><br><span class="s">Spinning: what to tie on, how to work it, what's next</span></span></button>
+    <button class="bigbtn b" id="goEgi" type="button"><span>${lureSVG("egi",["#ff8a1f","#ffd93a"])}</span><span><span class="t">Start eging</span><br><span class="s">Squid: colour, count and cadence for right now</span></span></button>
+   </div>
+   ${resume?`<button class="btn ghost" id="resume" type="button">Back to my ${S.mode==="egi"?"eging":"fishing"} session · step ${S.step}</button>`:""}
+   ${!WX&&LOC?`<div class="warn">No live weather right now. You can still fish — just set the light, wind and sea yourself on the next screen.</div>`:""}
+   <div class="links"><button class="btn ghost small" id="goBox" type="button">What I'm bringing (${bringCount()[0]})</button><button class="btn ghost small" id="goLog" type="button">Catch log (${store.log.length})</button></div>
+   <p class="note">Weather and waves from Open-Meteo, updated every 15 minutes. Location stays on this phone.</p>
+  </section>`;
+  app.querySelector(".bigbtn.a span").style.cssText="display:block;width:64px";
+  app.querySelector(".bigbtn.b span").style.cssText="display:block;width:64px";
+  document.getElementById("goFish").onclick=()=>show("setup");
+  document.getElementById("goEgi").onclick=()=>show("egisetup");
+  document.getElementById("goBox").onclick=()=>show("box");
+  document.getElementById("goLog").onclick=()=>show("log");
+  if(resume) document.getElementById("resume").onclick=()=>show(S.mode==="egi"?"egi":"session");
+}
+function vWhere(){
+  app.innerHTML=`<section class="screen"><h2>Where are you fishing?</h2>
+   <button class="btn sea" id="gps" type="button">Use my GPS</button>
+   <div class="card sel"><div class="lbl"><span>Or search a place</span></div><input type="search" id="q" placeholder="e.g. Kassiopi, Corfu" autocomplete="off"><div id="res" class="boxlist"></div></div>
+   <p class="note">GPS needs the app opened over https (or from a file on a computer). If your phone blocks it, search the nearest village.</p></section>`;
+  document.getElementById("gps").onclick=()=>{locate(true);show("home");};
+  let tmr;const q=document.getElementById("q"),res=document.getElementById("res");
+  q.oninput=()=>{clearTimeout(tmr);tmr=setTimeout(async()=>{if(q.value.trim().length<2){res.innerHTML="";return;}
+    try{const j=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q.value.trim())}&count=6`).then(r=>r.json());
+      res.innerHTML=(j.results||[]).map((r,i)=>`<button type="button" class="boxrow" data-i="${i}" style="text-align:left;cursor:pointer"><span class="txt"><b>${esc(r.name)}</b><small>${esc([r.admin1,r.country].filter(Boolean).join(", "))}</small></span></button>`).join("")||`<p class="note">No places found.</p>`;
+      res.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{const r=j.results[+b.dataset.i];LOC={lat:r.latitude,lon:r.longitude,name:r.name+(r.admin1?", "+r.admin1:"")};store.loc=LOC;save();WX=null;loadWX();show("home");});
+    }catch(e){res.innerHTML=`<p class="note">Search needs an internet connection.</p>`;}},350);};
+  q.focus();
+}
+function vSetup(){
+  autoFill();
+  app.innerHTML=`<section class="screen"><h2>What's the spot like?</h2>
+   <p class="note">Weather already filled in what it can. Change anything that's wrong — the rest is up to your eyes.</p>
+   <button class="btn ghost small" id="pack" type="button">Packed: ${bringCount()[0]} lures — change</button>
+   <div class="card" style="display:flex;flex-direction:column;gap:16px">${SELECTORS.map(selHTML).join("")}</div>
+   <button class="btn primary" id="go" type="button">Give me my first lure</button></section>`;
+  bindChips(app);
+  document.getElementById("pack").onclick=()=>show("box");
+  document.getElementById("go").onclick=()=>{newSession("fish");const s=nextSuggestion("next");if(!s){toast("Nothing packed for this spot — switch some lures on",true);return;}takeSuggestion(s);show("session");};
+}
+function depthBar(z){return `<div class="depthbar" aria-label="Depth: ${ZNAME[z]}">${ZONES[z].map(o=>`<i class="${o?"on":""}"></i>`).join("")}</div>`;}
+function vSession(){
+  const s=S.cur,L=INV[s.k],f=feats();
+  const how=[...s.t.how,...((s.t.alt&&s.t.alt[s.k])||[])];
+  app.innerHTML=`<section class="screen">
+   <div class="quick" aria-label="Quick updates">
+     <button type="button" class="chip" data-k="birds" data-v="diving" aria-pressed="${COND.birds==="diving"}">🐦 Birds diving</button>
+     <button type="button" class="chip" data-k="fish" data-v="boils" aria-pressed="${COND.fish==="boils"}">💥 Fish busting</button>
+     <button type="button" class="chip" data-k="fish" data-v="bait" aria-pressed="${COND.fish==="bait"}">🐟 Bait in close</button>
+     <button type="button" class="chip" id="calm" aria-pressed="false">All quiet</button>
+     <button type="button" class="chip" id="edit">Edit spot</button>
+   </div>
+   <article class="sug">
+     <div class="hd"><span class="step">STEP ${S.step} · ${Math.round((Date.now()-S.start)/60000)} MIN IN</span><span class="zone">${ZNAME[s.t.zone]}</span></div>
+     <div class="lureart">${lureSVG(L.fam,s.col.sw,true,s.col.pat)}</div>
+     <div class="bd">
+       <div><div class="lname">${esc(L.name)}</div><div class="lmaker">${esc(L.maker)} · ${L.w} g · ${L.len} mm${L.buoy?" · "+L.buoy:""}</div></div>
+       <div class="colour"><span class="sw" style="${swStyle(s.col.sw)}"></span><span><b>${s.head?"Body: ":""}${esc(s.col.c)}</b><small>${s.col.n>1?s.col.n+" in your box":"1 in your box"}</small></span></div>
+       ${s.head?`<div class="colour"><span class="sw" style="background:#6b6a3a"></span><span><b>${s.head.n}</b><small>${s.head.why}</small></span></div>`:""}
+       <div style="display:flex;gap:12px;align-items:flex-start">${depthBar(s.t.zone)}<div style="flex:1;min-width:0"><div class="tech">${esc(s.t.title)}</div><ol class="how">${how.map(h=>`<li>${esc(h)}</li>`).join("")}</ol></div></div>
+       <div class="casts">🎯 ${esc(s.t.casts)}</div>
+       <div class="why">${s.reasons.map(r=>`<span>${esc(r)}</span>`).join("")}</div>
+     </div>
+   </article>
+   <div class="actions">
+     <button class="btn primary" id="next" type="button">Did it — no action. Next</button>
+     <div class="row"><button class="btn sea small" id="follow" type="button">Follow / missed hit</button><button class="btn good small" id="fishon" type="button">Fish on! 🎣</button></div>
+   </div>
+   ${S.hist.length?`<div class="card"><h3>Tried this session</h3><div class="tried" style="margin-top:8px">${S.hist.slice(-8).reverse().map(h=>`<div><span class="sw" style="${swStyle(h.sw)}"></span>${esc(h.txt)}</div>`).join("")}</div></div>`:""}
+  </section>`;
+  bindChips(app.querySelector(".quick"),()=>{advance("next",true);});
+  document.getElementById("calm").onclick=()=>{COND.birds="none";COND.fish="none";advance("next",true);};
+  document.getElementById("edit").onclick=()=>show("setup2");
+  document.getElementById("next").onclick=()=>advance("next");
+  document.getElementById("follow").onclick=()=>advance("follow");
+  document.getElementById("fishon").onclick=()=>{logCatch(INV[s.k].name,s.col.c,s.t.title);toast("Logged! Same lure, same spot — keep going.");};
+}
+function advance(mode,changed){
+  const s=S.cur;S.hist.push({sw:s.col.sw,txt:`${INV[s.k].name} · ${s.col.c} · ${s.t.title}${mode==="follow"?" (follow)":""}`});
+  const n=nextSuggestion(mode);if(n){takeSuggestion(n);} if(changed)toast("Updated for what you're seeing");
+  show("session");
+}
+function vSetup2(){ // edit conditions mid-session
+  app.innerHTML=`<section class="screen"><h2>Update the spot</h2><div class="card" style="display:flex;flex-direction:column;gap:16px">${SELECTORS.map(selHTML).join("")}</div><button class="btn primary" id="go" type="button">Back to fishing</button></section>`;
+  bindChips(app,vSetup2);
+  document.getElementById("go").onclick=()=>{S.hist.push({sw:S.cur.col.sw,txt:"Conditions changed"});const n=nextSuggestion("next");if(n)takeSuggestion(n);show("session");};
+}
+function vEgiSetup(){
+  autoFill(); const m=moon();
+  const egiSel=SELECTORS.filter(s=>["phase","sky","wind","face","bottom","depth","clarity","surface"].includes(s.k));
+  app.innerHTML=`<section class="screen"><h2>Eging conditions</h2>
+   <div class="card moon">${moonSVG(m.ill,m.p)}<div><b>${m.name}</b><div class="note">${m.ill}% lit · ${m.ill<40?"dark nights: fish near harbour lights, use the glow":"bright nights: squid see well, natural colours"}</div></div></div>
+   ${(COND.phase||localPhase())==="day"?`<div class="warn">Squid feed best from dusk to dawn. Daytime works over deep weed beds — expect slower fishing.</div>`:""}
+   ${COND.wind==="strong"||COND.wind==="gale"?`<div class="warn">Strong wind bows the line and hides the bite. Find a sheltered side, or keep the rod tip low.</div>`:""}
+   <div class="card" style="display:flex;flex-direction:column;gap:16px">${egiSel.map(selHTML).join("")}</div>
+   <button class="btn primary" id="go" type="button">Pick my squid jig</button></section>`;
+  bindChips(app);
+  document.getElementById("go").onclick=()=>{newSession("egi");S.egiIdx=0;S.cur=null;egiNext(false);show("egi");};
+}
+function vEgi(){
+  const c=S.cur,st=c.step;
+  app.innerHTML=`<section class="screen">
+   <article class="sug">
+    <div class="hd"><span class="step">STEP ${S.step} · ${Math.round((Date.now()-S.start)/60000)} MIN IN</span><span class="zone">EGI 3.5#</span></div>
+    <div class="lureart">${lureSVG("egi",c.col.sw,true,c.col.pat)}</div>
+    <div class="bd">
+     <div class="colour"><span class="sw" style="${swStyle(c.col.sw)}"></span><span><b>${esc(c.col.c)}</b><small>${esc(c.why)}</small></span></div>
+     <div class="tech">${esc(st.title)}</div>
+     <ol class="how">${st.how.map(h=>`<li>${esc(h)}</li>`).join("")}</ol>
+     <div class="why"><span>no hard strike: sweep up and keep steady pressure</span><span>drag set light</span></div>
+    </div>
+   </article>
+   <div class="actions">
+     <button class="btn primary" id="next" type="button">Did it — no squid. Next</button>
+     <div class="row"><button class="btn sea small" id="col" type="button">Change colour</button><button class="btn good small" id="on" type="button">Squid on! 🦑</button></div>
+   </div>
+   ${S.hist.length?`<div class="card"><h3>Tried this session</h3><div class="tried" style="margin-top:8px">${S.hist.slice(-8).reverse().map(h=>`<div><span class="sw" style="${swStyle(h.sw)}"></span>${esc(h.txt)}</div>`).join("")}</div></div>`:""}
+  </section>`;
+  const push=()=>S.hist.push({sw:c.col.sw,txt:`${c.col.c} · ${st.title}`});
+  document.getElementById("next").onclick=()=>{push();egiNext(false);show("egi");};
+  document.getElementById("col").onclick=()=>{push();egiNext(true);show("egi");};
+  document.getElementById("on").onclick=()=>{logCatch("Squid jig 3.5#",c.col.c,st.title);toast("Logged! Squid travel in groups — cast straight back to the same spot.");};
+}
+function vBox(){
+  const groups={};for(const k in INV){(groups[INV[k].fam]=groups[INV[k].fam]||[]).push(k);}
+  const [a,t]=bringCount();
+  app.innerHTML=`<section class="screen"><h2>What I'm bringing</h2>
+   <p class="note">Switch off anything that stays at home (or is lost). LureCast only suggests what's switched on. <b>${a} of ${t}</b> lures packed.</p>
+   <div class="row"><button class="btn ghost small" id="allOn" type="button">Bring everything</button><button class="btn ghost small" id="allOff" type="button">Empty the bag</button></div>
+   ${Object.keys(FAMNAME).filter(f=>groups[f]).map(f=>`<div class="sel"><div class="lbl"><h3>${FAMNAME[f]}</h3><span class="row" style="flex:none;gap:6px"><button type="button" class="chip" data-fam="${f}" data-on="1">All</button><button type="button" class="chip" data-fam="${f}" data-on="0">None</button></span></div><div class="boxlist">${groups[f].flatMap(k=>INV[k].cols.map(col=>{const id=k+"|"+col.c,on=!store.off.includes(id),dis=!!INV[k].noHead;return `<label class="boxrow${on&&!dis?"":" lost"}"><span class="mini">${lureSVG(INV[k].fam,col.sw,false,col.pat)}</span><span class="txt"><b>${esc(INV[k].name)}</b><small>${esc(col.c)}${col.n>1?" ×"+col.n:""} · ${INV[k].w} g · ${INV[k].len} mm</small>${dis?`<small>Needs No3 heads and hooks before it can be fished</small>`:INV[k].boat?`<small>Only suggested when "Fishing from: Boat"</small>`:""}</span><input type="checkbox" class="tg" data-id="${esc(id)}" ${on?"checked":""} ${dis?"disabled":""} aria-label="Bring ${esc(INV[k].name)} ${esc(col.c)}"></label>`})).join("")}</div></div>`).join("")}
+   <div class="card"><h3>Soft-lure spares</h3><div class="kv" style="margin-top:8px">${SPARES.map(([n,q])=>`<dt>${n}</dt><dd>×${q}</dd>`).join("")}</div></div>
+  </section>`;
+  app.querySelectorAll(".tg").forEach(cb=>cb.onchange=()=>{const id=cb.dataset.id,i=store.off.indexOf(id);if(cb.checked&&i>=0)store.off.splice(i,1);if(!cb.checked&&i<0)store.off.push(id);save();const y=scrollY;vBox();scrollTo(0,y);});
+  const setFam=(f,on)=>{for(const k of groups[f])for(const c of INV[k].cols){const id=k+"|"+c.c,i=store.off.indexOf(id);if(on&&i>=0)store.off.splice(i,1);if(!on&&i<0)store.off.push(id);}save();const y=scrollY;vBox();scrollTo(0,y);};
+  app.querySelectorAll("[data-fam]").forEach(b=>b.onclick=()=>setFam(b.dataset.fam,b.dataset.on==="1"));
+  document.getElementById("allOn").onclick=()=>{store.off=[];save();vBox();};
+  document.getElementById("allOff").onclick=()=>{store.off=[];for(const k in INV)for(const c of INV[k].cols)store.off.push(k+"|"+c.c);save();vBox();};
+}
+function vLog(){
+  app.innerHTML=`<section class="screen"><h2>Catch log</h2>
+   ${store.log.length?`<div class="boxlist">${store.log.slice().reverse().map(e=>`<div class="boxrow"><span class="txt"><b>${esc(e.lure)} · ${esc(e.col)}</b><small>${esc(e.tech)} · ${new Date(e.t).toLocaleString([], {dateStyle:"medium",timeStyle:"short"})}${e.place?" · "+esc(e.place):""}</small><small>${esc(e.cond)}</small></span></div>`).join("")}</div>
+   <button class="btn ghost small" id="clr" type="button">Clear log</button><div id="sure"></div>`
+   :`<div class="card"><b>No catches yet.</b><p class="note">Tap "Fish on!" or "Squid on!" during a session and it lands here with the lure, colour, retrieve and conditions — so you learn what works on your spots.</p></div>`}</section>`;
+  const c=document.getElementById("clr");if(c)c.onclick=()=>{document.getElementById("sure").innerHTML=`<div class="row"><button class="btn ghost small" id="no" type="button">Keep it</button><button class="btn small" style="background:var(--bad);color:#fff" id="yes" type="button">Delete all</button></div>`;
+    document.getElementById("no").onclick=vLog;document.getElementById("yes").onclick=()=>{store.log=[];save();vLog();};};
+}
+function logCatch(lure,col,tech){
+  const f=feats();const cond=[PHASE[f.ph][0],COND.sky==="cloud"?"overcast":"sunny",WX?`wind ${dirName(WX.dir)} ${Math.round(WX.wind)} km/h`:"",WX&&WX.wave!=null?`waves ${WX.wave.toFixed(1)} m`:"",COND.bottom!=="?"?COND.bottom:"",COND.clarity!=="?"?COND.clarity+" water":""].filter(Boolean).join(" · ");
+  store.log.push({t:Date.now(),lure,col,tech,cond,place:LOC&&LOC.name});save();
+}
+let tt;function toast(msg,bad){clearTimeout(tt);let el=document.querySelector(".toast");if(!el){el=document.createElement("div");el.className="toast";el.setAttribute("role","status");document.body.appendChild(el);}
+  el.textContent=msg;el.style.background=bad?"var(--bad)":"var(--good)";tt=setTimeout(()=>el.remove(),3200);}
+let lock=null;async function wake(){try{lock=await navigator.wakeLock.request("screen");}catch(e){}}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&S)wake();});
+
+/* routes needing the extra view */
+const _rr=rerender;rerender=function(){if(view==="setup2")return vSetup2();_rr();};
+
+/* boot */
+renderWX();show("home");
+if(LOC)loadWX();
+locate(false);
+setInterval(()=>{if(LOC&&document.visibilityState==="visible")loadWX();},15*60*1000);
+setInterval(()=>{const before=COND.phase;autoFill();if(COND.phase!==before&&before){renderWX();toast(`It's ${PHASE[COND.phase][0].toLowerCase()} now — next suggestions switch to ${PHASE[COND.phase][0].toLowerCase()} lures and colours`);if(view==="setup"||view==="setup2"||view==="egisetup")rerender();}},60*1000);
+if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost")){navigator.serviceWorker.register("sw.js").catch(()=>{});}
+</script>
