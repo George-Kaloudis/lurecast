@@ -468,6 +468,14 @@ function envAdj(t,k,f){
   if(f.warm&&t.zone==="top"&&f.twi){d+=1;r.push("warm sea: surface feeding at first and last light");}
   return {d,r};
 }
+// Rod fit: Oceanic Team Viper 90H, rated 20–60 g
+const ROD={name:"Team Viper",min:20,max:60};
+function rodAdj(k){const w=INV[k].w;
+  if(w<ROD.min) return {d:-4,r:`under your rod's ${ROD.min}–${ROD.max} g range: short casts, so keep it close in`};
+  if(w<ROD.min+5) return {d:-1,r:""};
+  if(w>ROD.max) return {d:-4,r:`over your rod's ${ROD.max} g limit: lob it, don't whip it`};
+  if(w>ROD.max-5) return {d:-1,r:""};
+  return {d:0,r:""};}
 function candidates(f){
   const out=[];
   for(const t of T) for(const k of t.lures){
@@ -475,7 +483,7 @@ function candidates(f){
     let s=t.score(f)+((t.adj&&t.adj[k])?t.adj[k](f):0);
     if(f.rel==="on"&&f.windy&&WINDPENALTY(k)) s-=2;
     if(f.gale&&INV[k].w<30) s-=2;
-    s+=envAdj(t,k,f).d;
+    s+=envAdj(t,k,f).d+rodAdj(k).d;
     out.push({t,k,s});
   }
   return out;
@@ -499,6 +507,7 @@ function build(t,k,f,pc,extra){
   if(pc&&pc.reason) reasons.push(pc.reason);
   if(f.rel==="on"&&f.windy&&INV[k].w>=35) reasons.push("heavy enough for the onshore wind");
   reasons.splice(extra.length,0,...envAdj(t,k,f).r);
+  if(rodAdj(k).r) reasons.unshift(rodAdj(k).r);
   const s={t,k,col:pc&&pc.col,reasons:[...new Set(reasons)].slice(0,4)};
   if(INV[k].soft){ s.head=t.head==="search"?{n:"Search head 28 g",why:"rides tilted above the bottom — for scratching and snaggy shallows"}:{n:"Offshore head 40 g",why:"swims on the drop and the rise — for deeper water and lift-and-drop"}; }
   return s;
