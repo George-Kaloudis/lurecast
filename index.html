@@ -77,8 +77,7 @@ h3{font-family:var(--display);font-size:1.05rem;letter-spacing:.06em;text-transf
 .bigbtn .s{font-size:.88rem;opacity:.9}
 .bigbtn.a{background:var(--buoy);color:var(--buoy-ink)}
 .bigbtn.b{background:var(--sea);color:#eaf6f5}
-.links{display:flex;gap:10px}
-.links button{flex:1}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 /* selectors */
 .sel{display:flex;flex-direction:column;gap:8px}
 .sel .lbl{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
@@ -135,6 +134,18 @@ ol.how{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
 .tg:disabled{opacity:.4}
 .tg:focus-visible{outline:3px solid var(--buoy);outline-offset:2px}
 .sel .lbl h3{margin:0}
+.form{display:flex;flex-direction:column;gap:12px}
+.form label{display:flex;flex-direction:column;gap:5px;font-weight:700;font-size:.92rem;min-width:0}
+.form input[type=text],.form input[type=number],.form select{font:inherit;font-size:16px;padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);width:100%}
+.form label.check{flex-direction:row;align-items:center;gap:10px;font-weight:400}
+.form label.check input{width:22px;height:22px;accent-color:var(--buoy)}
+.pickers input[type=color]{width:100%;height:46px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);padding:3px}
+.pickers input[type=color]:disabled{opacity:.35}
+.linkbtn{background:none;border:0;padding:4px 0;color:var(--buoy);font-weight:700;cursor:pointer;text-align:left;font-size:.88rem}
+.qty{display:flex;align-items:center;gap:10px;margin-top:6px}
+.qty .chip{padding:4px 14px;font-size:1.1rem}
+small.needs{color:var(--warn)!important;font-weight:700}
+details summary{cursor:pointer}
 .tag{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
 input[type=search]{width:100%;font:inherit;font-size:16px;padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg)}
 .moon{display:flex;align-items:center;gap:10px}
@@ -162,20 +173,20 @@ input[type=search]{width:100%;font:inherit;font-size:16px;padding:11px 12px;bord
 /* ================= INVENTORY (from your Lure Inventory) =================
    tags: nat = natural, brt = bright, drk = dark/silhouette, ctr = contrast (red head etc), glo = glows
    sw: [back colour, belly colour] used to paint the lure drawings          */
-const C=(c,sw,tags,n=1,pat)=>({c,sw,tags,n,pat});
+const C=(c,sw,tags,n=1,pat,head)=>({c,sw,tags,n,pat,head});
 const INV={
  mag:{name:"Mag Minnow 125F",maker:"Yo-Zuri",fam:"minnow",w:28,len:125,buoy:"floating",cols:[C("Bronze",["#7a5a2a","#dcb76d"],["nat"]),C("Anchovy",["#3f5c6b","#d5dde0"],["nat"]),C("Pink / black",["#1b1b1f","#ff5fa2"],["ctr","drk"])]},
  lance:{name:"Tide Minnow Lance 140S",maker:"DUO",fam:"minnow",w:26,len:140,buoy:"sinking",headwind:true,cols:[C("Pink back pearl",["#ff6fae","#f3efe6"],["brt"])]},
  mommotti:{name:"Mommotti 190 S",maker:"Seaspin",fam:"minnow",w:34,len:190,buoy:"sinking",cols:[C("Bar",["#2f4b5a","#c9d3d6"],["nat"])]},
  bu:{name:"Floating Long Casting Minnow",maker:"B&U",fam:"minnow",w:33.5,len:163,buoy:"floating",cols:[C("Luminous: silver, dark stripes, clear belly",["#7d838b","#eef1f3"],["nat","glo"],1,"stripes"),C("Black with blue",["#14171f","#3b6fd8"],["drk"]),C("Green",["#2f7d43","#cfe3c2"],["nat"]),C("Double blue",["#1d4fb8","#8fb4ff"],["nat"])]},
  k5333:{name:"5333S Minnow",maker:"Kingdom",fam:"minnow",w:33,len:180,buoy:"slow-sinking",cols:[C("Chartreuse back, silver",["#c8e13a","#e6ebee"],["brt"]),C("Dark blue back, spotted sardine",["#1c2f5a","#d7dde3"],["nat"])]},
- lingyue:{name:"Long Cast Minnow",maker:"LINGYUE",fam:"minnow",w:40,len:190,buoy:"unknown",cols:[C("Red head, plain silver",["#d8282a","#eef0f2"],["ctr"]),C("Red head, dark back, spotted silver",["#2a2e36","#e6eaee"],["ctr","nat"]),C("Blue back, silver",["#2b7ad8","#e6ecf2"],["nat"]),C("Yellow head, green back, spotted silver",["#1f7a5a","#e4eaee"],["nat"]),C("Yellow head, dark back, silver, orange belly",["#2a2e36","#ff8a5c"],["brt","ctr"])]},
+ lingyue:{name:"Long Cast Minnow",maker:"LINGYUE",fam:"minnow",w:40,len:190,buoy:"floating",cols:[C("Red head, plain silver",["#c9d0d6","#eef0f2"],["ctr"],1,"","#d8282a"),C("Red head, dark back, spotted silver",["#2a2e36","#e6eaee"],["ctr","nat"],1,"spots","#d8282a"),C("Blue back, silver",["#2b7ad8","#e6ecf2"],["nat"]),C("Yellow head, green back, spotted silver",["#1f7a5a","#e4eaee"],["nat"],1,"spots","#f2c516"),C("Yellow head, dark back, silver, orange belly",["#2a2e36","#ff8a5c"],["brt","ctr"],1,"","#f2c516")]},
  temu45:{name:"Long-Distance Sinking Minnow",maker:"Temu",fam:"minnow",w:45,len:140,buoy:"sinking",cols:[C("Green rainbow holographic",["#2f9e6f","#b9f0d8"],["nat","brt"]),C("Silver, dark back, red throat",["#2a2f36","#e8ecef"],["nat"]),C("Red back, gold flank",["#b3262b","#e2b84a"],["brt"])]},
- temu33:{name:"Ultra-Long Casting Minnow",maker:"Temu",fam:"minnow",w:33,len:110,buoy:"unknown",cols:[C("Pink / blue holographic",["#e566a8","#7fb3ff"],["brt"]),C("Red head, silver",["#d22b2b","#e9edf0"],["ctr"]),C("Silver, dark back",["#2b3138","#e6eaee"],["nat"]),C("White, orange tiger stripes",["#f08a24","#f7f4ee"],["brt"]),C("Pink rainbow",["#ff79b8","#ffe0f0"],["brt"])]},
+ temu33:{name:"Ultra-Long Casting Minnow",maker:"Temu",fam:"minnow",w:33,len:110,buoy:"sinking",cols:[C("Pink / blue holographic",["#e566a8","#7fb3ff"],["brt"]),C("Red head, silver",["#c9d0d6","#e9edf0"],["ctr"],1,"","#d22b2b"),C("Silver, dark back",["#2b3138","#e6eaee"],["nat"]),C("White, orange tiger stripes",["#f08a24","#f7f4ee"],["brt"]),C("Pink rainbow",["#ff79b8","#ffe0f0"],["brt"])]},
  surfwalker:{name:"Surf Walker",maker:"Savage Gear",fam:"pencil",w:41,len:210,buoy:"floating",cols:[C("Green-blue back, silver",["#2c7d86","#e6edf0"],["nat"])]},
  needleF:{name:"Needle Pencil (floating)",maker:"Kingdom",fam:"needle",w:30,len:205,buoy:"floating",cols:[C("Black / silver",["#121417","#dfe4e8"],["drk"]),C("Pink",["#ff5ea8","#ffd6ea"],["brt"]),C("Green-blue / silver",["#2a8a84","#e2e9ec"],["nat"])]},
  needleS:{name:"Needle Pencil (sinking)",maker:"Kingdom",fam:"needle",w:40,len:205,buoy:"sinking",cols:[C("Black / silver",["#121417","#dfe4e8"],["drk"]),C("Pink",["#ff5ea8","#ffd6ea"],["brt"]),C("Green-blue / silver",["#2a8a84","#e2e9ec"],["nat"])]},
- pencil:{name:"Floating Pencil",maker:"Temu",fam:"pencil",w:32,len:150,buoy:"floating",cols:[C("Red head, white",["#d32626","#f6f6f2"],["ctr"]),C("Black back, white",["#16181c","#f4f4f0"],["drk"]),C("Pink head, white",["#ff5ea8","#f6f6f2"],["brt"]),C("Hot pink",["#ff2e93","#ff8cc4"],["brt"]),C("Yellow back, white",["#f2c516","#f6f6f2"],["brt"])]},
+ pencil:{name:"Floating Pencil",maker:"Temu",fam:"pencil",w:32,len:150,buoy:"floating",cols:[C("Red head, white",["#f6f6f2","#f6f6f2"],["ctr"],1,"","#d32626"),C("Black back, white",["#16181c","#f4f4f0"],["drk"]),C("Pink head, white",["#f6f6f2","#f6f6f2"],["brt"],1,"","#ff5ea8"),C("Hot pink",["#ff2e93","#ff8cc4"],["brt"]),C("Yellow back, white",["#f2c516","#f6f6f2"],["brt"])]},
  yzpop:{name:"3D Inshore Popper",maker:"Yo-Zuri",fam:"popper",w:45,len:120,buoy:"floating",cols:[C("Clear pearl, red throat",["#e4dfd2","#d43a3a"],["nat"])]},
  kpop:{name:"Topwater Popper 5285",maker:"Kingdom",fam:"popper",w:36,len:130,buoy:"floating",rattle:true,cols:[C("Blue",["#1f5fc4","#cfe0ff"],["nat","drk"])]},
  takami:{name:"Water Spray Popper",maker:"Takami",fam:"popper",w:16.6,len:85,buoy:"floating",cols:[C("Bright pink",["#ff3d9a","#ffc2df"],["brt"])]},
@@ -185,40 +196,80 @@ const INV={
  proberos:{name:"Luminous 3D Fast Jig",maker:"PROBEROS",fam:"jig",w:45,len:92,cols:[C("Yellow back, silver",["#f0c419","#e3e8ec"],["brt","glo"],2),C("Blue spotted sardine",["#2b5aa3","#dfe5ea"],["nat","glo"],2),C("Pink / purple",["#e35bb0","#8b5cf6"],["brt","glo"],2),C("Black and silver zebra",["#15171b","#d8dde2"],["drk","glo"],2),C("Blue / silver",["#2563c9","#e2e8ee"],["nat","glo"],2)]},
  slimjig:{name:"Slim Metal Jig",maker:"Jigging Pro",fam:"jigslim",w:40,len:140,cols:[C("Luminous pink",["#ff7ab8","#f2fff0"],["brt","glo"]),C("Black streak",["#141619","#b9c1c8"],["drk"]),C("Blue",["#1f5fc4","#c9dcff"],["nat"])]},
  slow3d:{name:"Slow Sinking 3D Jig",maker:"Unknown brand",fam:"jig",w:40,len:80,cols:[C("Blue-green back, silver",["#1f7f86","#e2e8ec"],["nat"]),C("Blue back, pink belly",["#2853b0","#ff8fc4"],["brt"]),C("Blue back, silver holo",["#2a5db8","#e8eef4"],["nat"]),C("Silver, pink-purple belly",["#c5ccd3","#b45ad1"],["brt"])]},
- bm:{name:"Black Minnow No4",maker:"Fiiish",fam:"soft",w:50,len:140,soft:true,cols:[C("Khaki",["#6b6a3a","#c8c29a"],["nat"],2),C("Blue",["#2457b0","#c7d8f5"],["nat"],2),C("White (red head)",["#f4f4f0","#ffffff"],["brt","ctr"],2),C("Candy Green",["#1f6a3a","#d8f0a8"],["ctr","drk"],3),C("Fluo Orange UV",["#ff7a1a","#ffc08a"],["brt"],3),C("Rose Fluorescent",["#ff4fa0","#ffc0de"],["brt"],3),C("Silver Strike",["#8f9aa5","#eef2f5"],["nat"],3)]},
+ bm:{name:"Black Minnow No4",maker:"Fiiish",fam:"soft",w:50,len:140,soft:true,size:"No4",bodyW:10,cols:[C("Khaki",["#6b6a3a","#c8c29a"],["nat"],2),C("Blue",["#2457b0","#c7d8f5"],["nat"],2),C("White (red head)",["#f4f4f0","#ffffff"],["brt","ctr"],2,"","#c62828"),C("Candy Green",["#1f6a3a","#d8f0a8"],["ctr","drk"],3),C("Fluo Orange UV",["#ff7a1a","#ffc08a"],["brt"],3),C("Rose Fluorescent",["#ff4fa0","#ffc0de"],["brt"],3),C("Silver Strike",["#8f9aa5","#eef2f5"],["nat"],3)]},
  troll:{name:"Trolling Minnow 200",maker:"Temu",fam:"minnow",w:38,len:200,buoy:"sinking diver 0.5–1.5 m",boat:true,cols:[C("Blue",["#1f5fc4","#d8e6ff"],["nat"])]},
- bm3:{name:"Black Minnow No3 (body only)",maker:"Fiiish",fam:"soft",w:6,len:120,soft:true,noHead:true,cols:[C("Khaki",["#6b6a3a","#c8c29a"],["nat"],2)]},
+ bm3:{name:"Black Minnow No3",maker:"Fiiish",fam:"soft",w:6,len:120,soft:true,size:"No3",bodyW:6,cols:[C("Khaki",["#6b6a3a","#c8c29a"],["nat"],2)]},
  egi:{name:"Luminous Squid Jig 3.5#",maker:"Temu",fam:"egi",w:19,len:132,cols:[C("Lime green, orange bars",["#9be22b","#ff8a1f"],["brt"]),C("Blue rainbow, orange bars",["#2f6fd8","#ff8a1f"],["nat"]),C("Orange / yellow",["#ff8a1f","#ffd93a"],["brt"]),C("Pink / purple stripes",["#ff5ea8","#8b5cf6"],["brt"]),C("Green, orange bars",["#2f8a4a","#ff8a1f"],["nat"]),C("Orange",["#ff7a12","#ffb46a"],["brt"]),C("Blue",["#2a5fc2","#bcd2ff"],["nat"]),C("Pink, yellow belly",["#ff5ea8","#ffe04a"],["brt"]),C("Brown / orange natural",["#7a4a26","#e08a3a"],["nat"]),C("White, red-orange bars",["#f5f2ea","#ff5a2a"],["brt","night"])]}
 };
-const SPARES=[["Offshore jig head 40 g (No4)",2],["Search jig head 28 g (No4)",4],["Krog Premium hooks (No4)",8]];
 const FAMNAME={minnow:"Minnows",needle:"Needles",pencil:"Pencils",popper:"Poppers",jig:"Metal jigs",jigslim:"Slim jigs",soft:"Soft lures (bodies)",egi:"Squid jigs"};
 
 /* ================= STORAGE (per phone, best effort) ================= */
 const KEY="lurecast.v1";
-let store={off:[],loc:null,log:[]};
+let store={off:[],loc:null,log:[],parts:null,custom:[],rod:null};
 try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s)store=Object.assign(store,s);}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}};
 if(store.missing){store.off=[...new Set([...(store.off||[]),...store.missing])];delete store.missing;}
-const isMissing=(k,c)=>store.off.includes(k+"|"+c)||!!INV[k].noHead;
-const avail=k=>(INV[k].boat&&COND.from!=="boat")?[]:INV[k].cols.filter(x=>!isMissing(k,x.c));
+// Fiiish heads and hooks: soft bodies only get suggested when a head and hooks of their size are packed
+const HEADTYPES=["Shallow","Shore","Search","Offshore","Deep"];
+const HEADWHY={Shallow:"light head for shallow, cluttered water",Shore:"all-round shore head: slow cast-and-retrieve just above the bottom",Search:"rides tilted above the bottom — for scratching and snaggy shallows",Offshore:"swims on the drop and the rise — for deeper water and lift-and-drop",Deep:"reaches deep water or strong current fast"};
+if(!store.parts) store.parts=[
+  {id:"p4off",size:"No4",kind:"head",type:"Offshore",w:40,qty:5,note:"3 on the combos + 2 spare"},
+  {id:"p4search",size:"No4",kind:"head",type:"Search",w:28,qty:4},
+  {id:"p4hook",size:"No4",kind:"hooks",qty:11,note:"Krog Premium: 3 on the combos + 8 spare"},
+  {id:"p3hook",size:"No3",kind:"hooks",qty:0}];
+if(!store.rod) store.rod={name:"Team Viper 90H",min:20,max:60};
+const partOn=p=>!store.off.includes("part|"+p.id)&&p.qty>0;
+const headsFor=size=>store.parts.filter(p=>p.kind==="head"&&p.size===size&&partOn(p));
+const hooksOK=size=>store.parts.some(p=>p.kind==="hooks"&&p.size===size&&partOn(p));
+const rigOK=k=>!INV[k].soft||(headsFor(INV[k].size).length>0&&hooksOK(INV[k].size));
+const HEADPREF={bmscratch:["Search","Shore","Shallow","Offshore","Deep"],bmlift:["Offshore","Deep","Shore","Search","Shallow"],bmswim:["Shore","Offshore","Shallow","Search","Deep"]};
+function pickHead(k,t){const hs=headsFor(INV[k].size);if(!hs.length)return null;const pref=HEADPREF[t&&t.id]||HEADTYPES;
+  return hs.slice().sort((a,b)=>pref.indexOf(a.type)-pref.indexOf(b.type)||(t&&t.id==="bmlift"&&COND.depth==="deep"?b.w-a.w:a.w-b.w))[0];}
+const lureW=(t,k)=>{const L=INV[k];if(!L.soft)return L.w;const hd=pickHead(k,t);return Math.round(((hd?hd.w:0)+L.bodyW)*10)/10;};
+// Lure types you can add yourself, and the retrieves each type is worked with
+const TYPES={
+ floatmin:{label:"Floating minnow",fam:"minnow",buoy:"floating",techs:["floatmin","troll"]},
+ sinkmin:{label:"Sinking minnow",fam:"minnow",buoy:"sinking",techs:["sinkmin","jerk","burn"]},
+ pencil:{label:"Floating pencil / walker",fam:"pencil",buoy:"floating",techs:["wtd"]},
+ needleF:{label:"Floating needle",fam:"needle",buoy:"floating",techs:["wake"]},
+ needleS:{label:"Sinking needle / sinking pencil",fam:"needle",buoy:"sinking",techs:["sneedle"]},
+ popper:{label:"Popper",fam:"popper",buoy:"floating",techs:["pop"]},
+ jigfast:{label:"Metal jig: compact, fast",fam:"jig",techs:["burn","jwp"]},
+ jigslim:{label:"Metal jig: slim, slow fall",fam:"jigslim",techs:["liftdrop","jwp"]},
+ egi:{label:"Squid jig (egi)",fam:"egi",techs:[]}};
+function fromCustom(c){const T=TYPES[c.type]||TYPES.floatmin;
+  return {name:c.name,maker:c.maker||"My lure",fam:T.fam,w:+c.w,len:+c.len,buoy:T.buoy,custom:true,type:c.type,
+    techs:T.techs.filter(id=>!(id==="burn"&&c.type==="sinkmin"&&+c.w<35)),
+    cols:c.cols.map(x=>C(x.c,[x.back,x.belly],x.tags,+x.n||1,x.pat||"",x.head||""))};}
+for(const c of store.custom||[]) INV[c.key]=fromCustom(c);
+const isMissing=(k,c)=>store.off.includes(k+"|"+c);
+const avail=k=>((INV[k].boat&&COND.from!=="boat")||!rigOK(k))?[]:INV[k].cols.filter(x=>!isMissing(k,x.c));
 const bringCount=()=>{let a=0,t=0;for(const k in INV)for(const c of INV[k].cols){t+=c.n;if(!store.off.includes(k+"|"+c.c))a+=c.n;}return [a,t];};
 
 /* ================= DRAWINGS ================= */
 let gid=0;
 function grad(sw){const id="g"+(++gid);return{id,def:`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sw[0]}"/><stop offset=".55" stop-color="${sw[0]}"/><stop offset=".62" stop-color="${sw[1]}"/><stop offset="1" stop-color="${sw[1]}"/></linearGradient>`};}
 const hook=(x,y)=>`<g stroke="#8a949c" stroke-width="2" fill="none" stroke-linecap="round"><path d="M${x} ${y} v10"/><path d="M${x} ${y+10} q-6 8 -10 2"/><path d="M${x} ${y+10} q6 8 10 2"/><path d="M${x} ${y+10} v8 q0 4 -4 3"/></g>`;
-function lureSVG(fam,sw,big,pat){
-  const g=grad(sw); const st=`stroke="var(--fg)" stroke-opacity=".25" stroke-width="1.5"`;
-  let body="";
-  if(fam==="minnow") body=`<path d="M30 60 q8 -10 30 0" fill="#cfe6ec" opacity=".7" ${st}/><path d="M50 60 C70 32 200 30 250 52 L272 40 L268 62 L272 84 L250 70 C200 92 70 90 50 60Z" fill="url(#${g.id})" ${st}/><circle cx="72" cy="56" r="7" fill="#fff"/><circle cx="73" cy="56" r="3.6" fill="#111"/>${hook(120,84)}${hook(205,80)}`;
-  else if(fam==="pencil"||fam==="needle") body=`<path d="M22 60 C40 46 230 44 268 56 L280 52 L280 68 L268 64 C230 76 40 74 22 60Z" fill="url(#${g.id})" ${st}/><circle cx="50" cy="57" r="5" fill="#fff"/><circle cx="51" cy="57" r="2.6" fill="#111"/>${hook(120,72)}${hook(240,68)}`;
-  else if(fam==="popper") body=`<path d="M58 40 L62 60 L58 80 C120 92 220 86 262 62 L274 52 L272 70 L262 58 C220 34 120 28 58 40Z" fill="url(#${g.id})" ${st}/><ellipse cx="58" cy="60" rx="8" ry="20" fill="var(--sea2)" opacity=".75"/><circle cx="84" cy="52" r="6" fill="#fff"/><circle cx="85" cy="52" r="3" fill="#111"/>${hook(130,84)}${hook(220,78)}`;
-  else if(fam==="jig") body=`<path d="M60 60 C80 34 210 36 240 56 L246 60 L240 64 C210 84 80 86 60 60Z" fill="url(#${g.id})" ${st}/><path d="M60 60 l-14 -6 v12z" fill="#8a949c"/><circle cx="84" cy="56" r="5" fill="#fff"/><circle cx="85" cy="56" r="2.5" fill="#111"/>${hook(250,62)}<path d="M40 60 q-10 12 -2 24" stroke="#c03" stroke-width="3" fill="none"/>`;
-  else if(fam==="jigslim") body=`<path d="M30 60 C50 48 240 46 276 58 L280 60 L276 62 C240 74 50 72 30 60Z" fill="url(#${g.id})" ${st}/><circle cx="52" cy="58" r="4" fill="#fff"/><circle cx="53" cy="58" r="2" fill="#111"/>${hook(282,60)}`;
-  else if(fam==="soft") body=`<path d="M40 60 C40 40 80 38 92 44 L92 76 C80 82 40 80 40 60Z" fill="#6b6a3a" ${st}/><path d="M92 44 C150 36 210 46 240 56 L246 38 L262 40 L254 60 L262 80 L246 82 L240 64 C210 74 150 84 92 76Z" fill="url(#${g.id})" ${st}/><circle cx="62" cy="56" r="7" fill="#fff"/><circle cx="63" cy="56" r="3.6" fill="#111"/><path d="M150 42 q-6 -16 8 -20" stroke="#8a949c" stroke-width="3" fill="none"/>`;
-  else if(fam==="egi") body=`<path d="M50 60 C60 40 200 38 236 52 L250 60 L236 68 C200 82 60 80 50 60Z" fill="url(#${g.id})" ${st}/><path d="M80 44 L58 22 L110 42Z M80 76 L58 98 L110 78Z" fill="url(#${g.id})" opacity=".9" ${st}/><circle cx="214" cy="56" r="6" fill="#fff"/><circle cx="215" cy="56" r="3" fill="#111"/><path d="M42 60 l-16 0" stroke="#666" stroke-width="3"/>${[0,1,2,3,4,5].map(i=>`<path d="M26 60 l-10 ${-12+i*5}" stroke="#ccc" stroke-width="1.6"/>`).join("")}<path d="M120 76 l-8 6 l-4 -8z" fill="#c0392b"/>`;
-  if(pat==="stripes") body=body.replace(/(<circle)/,`<g stroke="#2a2d33" stroke-width="1.6" opacity=".75">${[0,1,2,3,4].map(i=>`<path d="M${80} ${44+i*3.2} C140 ${38+i*3.2} 200 ${40+i*3.2} 246 ${52+i*1.2}" fill="none"/>`).join("")}</g>$1`);
-  return `<svg viewBox="0 0 300 120" role="img" aria-hidden="${big?"false":"true"}"><defs>${g.def}</defs>${body}</svg>`;
+const eye=(x,y,r)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#fff"/><circle cx="${x+1}" cy="${y}" r="${r*.52}" fill="#111"/>`;
+const SHAPES={
+ minnow:{d:"M50 60 C70 32 200 30 250 52 L272 40 L268 62 L272 84 L250 70 C200 92 70 90 50 60Z",head:[44,98],pre:`<path d="M30 60 q8 -10 30 0" fill="#cfe6ec" opacity=".7" stroke="var(--fg)" stroke-opacity=".25" stroke-width="1.5"/>`,post:()=>eye(72,56,7)+hook(120,84)+hook(205,80)},
+ pencil:{d:"M22 60 C40 46 230 44 268 56 L280 52 L280 68 L268 64 C230 76 40 74 22 60Z",head:[18,72],post:()=>eye(50,57,5)+hook(120,72)+hook(240,68)},
+ popper:{d:"M58 40 L62 60 L58 80 C120 92 220 86 262 62 L274 52 L272 70 L262 58 C220 34 120 28 58 40Z",head:[50,104],post:()=>`<ellipse cx="58" cy="60" rx="8" ry="20" fill="var(--sea2)" opacity=".75"/>`+eye(84,52,6)+hook(130,84)+hook(220,78)},
+ jig:{d:"M60 60 C80 34 210 36 240 56 L246 60 L240 64 C210 84 80 86 60 60Z",head:[56,100],post:()=>`<path d="M60 60 l-14 -6 v12z" fill="#8a949c"/>`+eye(84,56,5)+hook(250,62)+`<path d="M40 60 q-10 12 -2 24" stroke="#c03" stroke-width="3" fill="none"/>`},
+ jigslim:{d:"M30 60 C50 48 240 46 276 58 L280 60 L276 62 C240 74 50 72 30 60Z",head:[26,70],post:()=>eye(52,58,4)+hook(282,60)},
+ soft:{d:"M92 44 C150 36 210 46 240 56 L246 38 L262 40 L254 60 L262 80 L246 82 L240 64 C210 74 150 84 92 76Z",softHead:true,post:()=>eye(62,56,7)+`<path d="M150 42 q-6 -16 8 -20" stroke="#8a949c" stroke-width="3" fill="none"/>`},
+ egi:{d:"M50 60 C60 40 200 38 236 52 L250 60 L236 68 C200 82 60 80 50 60Z",head:[196,252],fins:"M80 44 L58 22 L110 42Z M80 76 L58 98 L110 78Z",post:()=>eye(214,56,6)+`<path d="M42 60 l-16 0" stroke="#666" stroke-width="3"/>`+[0,1,2,3,4,5].map(i=>`<path d="M26 60 l-10 ${-12+i*5}" stroke="#ccc" stroke-width="1.6"/>`).join("")+`<path d="M120 76 l-8 6 l-4 -8z" fill="#c0392b"/>`}};
+SHAPES.needle=SHAPES.pencil;
+// Every drawing is built from the lure's type and its colours: back, belly, optional head colour and pattern
+function lureSVG(fam,sw,big,pat,head){
+  const S=SHAPES[fam]||SHAPES.minnow,g=grad(sw),cid="c"+(++gid),st=`stroke="var(--fg)" stroke-opacity=".25" stroke-width="1.5"`;
+  let deco="";
+  if(pat==="stripes") deco+=`<g stroke="#2a2d33" stroke-width="1.6" opacity=".75" fill="none">${[0,1,2,3,4].map(i=>`<path d="M0 ${43+i*3.4} C100 ${39+i*3.4} 200 ${41+i*3.4} 300 ${47+i*3.4}"/>`).join("")}</g>`;
+  if(pat==="spots") deco+=`<g fill="#22262c" opacity=".7">${[0,1,2,3,4,5,6,7,8].map(i=>`<circle cx="${70+i*20}" cy="${52+(i%2)*6}" r="2.6"/>`).join("")}</g>`;
+  if(pat==="bars") deco+=`<g fill="#22262c" opacity=".35">${[0,1,2,3,4,5].map(i=>`<rect x="${90+i*26}" y="20" width="9" height="80"/>`).join("")}</g>`;
+  if(head&&!S.softHead) deco+=`<rect x="${S.head[0]}" y="0" width="${S.head[1]-S.head[0]}" height="120" fill="${head}"/>`;
+  const softHead=S.softHead?`<path d="M40 60 C40 40 80 38 92 44 L92 76 C80 82 40 80 40 60Z" fill="${head||"#6b6a3a"}" ${st}/>`:"";
+  return `<svg viewBox="0 0 300 120" role="img" aria-hidden="${big?"false":"true"}"><defs>${g.def}<clipPath id="${cid}"><path d="${S.d}"/></clipPath></defs>${S.pre||""}${S.fins?`<path d="${S.fins}" fill="url(#${g.id})" opacity=".9" ${st}/>`:""}${softHead}<path d="${S.d}" fill="url(#${g.id})"/><g clip-path="url(#${cid})">${deco}</g><path d="${S.d}" fill="none" ${st}/>${S.post()}</svg>`;
 }
 const swStyle=sw=>`background:linear-gradient(180deg,${sw[0]} 55%,${sw[1]} 62%)`;
 const LOGO=`<svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#e8601c"/><path d="M8 40 q6 -6 12 0 t12 0 t12 0 t12 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M36 10 v18 a8 8 0 1 1 -14 -5" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M22 23 l-3 6 l6 -1z" fill="#fff"/></svg>`;
@@ -377,16 +428,17 @@ const T=[
   how:["Rod tip high, 10–11 o'clock.","Slow-to-medium steady wind so the nose rides out of the water and leaves a V-wake — a garfish on the surface.","Diving? Wind faster. Skating? Slow down."],
   score:f=>3+(f.calm?2:0)+(f.low?2:0)+(f.clear?1:0)-(f.rough?2:0)+(f.bait?1:0),
   why:f=>[f.low&&"bluefish and leerfish hunt garfish in low light",f.calm&&"calm water shows the wake"]},
- {id:"floatmin",title:"Slow wind, then twitch-pause",zone:"upper",lures:["mag","bu"],casts:"8–10 casts, cover the shallows",
+ {id:"floatmin",title:"Slow wind, then twitch-pause",zone:"upper",lures:["mag","bu","lingyue"],casts:"8–10 casts, cover the shallows",
   how:["Steady slow wind — just fast enough to feel the wobble in the rod tip.","Every 5–6 turns: two or three sharp twitches, then stop 1–2 s.","On the stop it floats up — that's when it gets hit.","Keep winding through taps; don't strike."],
   score:f=>4+(f.shallow?2:0)+((f.rocks||f.weed)?2:0)+(f.low?2:0)+(f.rough?1:0)+(f.rel==="on"?1:0)+(f.bait?1:0),
-  adj:{bu:f=>(f.night?2:0),mag:f=>(f.rel==="on"&&f.windy?-2:0)},
+  adj:{bu:f=>(f.night?2:0),mag:f=>(f.rel==="on"&&f.windy?-2:0),lingyue:f=>(f.windy||f.deep?1:0)},
+  alt:{lingyue:["At 40 g it casts much further than the Mag Minnow — reach the far side of the reef."]},
   why:f=>[f.shallow&&"shallow water: stays above snags",(f.rocks||f.weed)&&"floats up out of rock and weed on the pause",f.low&&"prime time for minnows",f.rough&&"minnows work well in white water"]},
- {id:"sinkmin",title:"Count down, steady wind",zone:"upper",lures:["lance","k5333","temu33","lingyue"],casts:"8–10 casts, change the count every 2 casts",
+ {id:"sinkmin",title:"Count down, steady wind",zone:"upper",lures:["lance","k5333","temu33"],casts:"8–10 casts, change the count every 2 casts",
   how:["Cast, close the bail, count while it sinks (start with 3).","Steady medium wind, with a twitch every few seconds.","Next casts: count 5, then 8, to search deeper.","Get a hit? Remember the count and repeat it."],
   score:f=>4+(f.windy?2:0)+(f.rough?1:0)+((f.medium||f.deep)?1:0)+(f.ph==="day"?1:0)+(f.ub?1:0),
-  adj:{lance:f=>(f.rel==="on"&&f.windy?3:0)+(f.clear?1:0),lingyue:f=>-1,temu33:f=>(f.bait?1:0)},
-  alt:{lingyue:["First time? Drop it at your feet: if it floats, fish it like a floating minnow and tell the Lure box."],lance:["Built for headwinds: three tungsten balls keep it flying straight into the wind."]},
+  adj:{lance:f=>(f.rel==="on"&&f.windy?3:0)+(f.clear?1:0),temu33:f=>(f.bait?1:0)},
+  alt:{lance:["Built for headwinds: three tungsten balls keep it flying straight into the wind."]},
   why:f=>[f.windy&&"heavy enough to cast into the wind",f.rough&&"runs under the chop",(f.medium||f.deep)&&"searches the first couple of metres"]},
  {id:"jerk",title:"Long jerk",zone:"upper",lures:["mommotti","k5333"],casts:"8 casts",
   how:["Count 2–3, then two hard rod jerks to the side — the lure darts wide left and right.","Wind in the slack, pause 1–2 s.","Mix speeds: sometimes three jerks, sometimes a steady wind.","Made for barracuda, bluefish and bass in the top metre."],
@@ -418,15 +470,15 @@ const T=[
   score:f=>COND.from==="boat"?(6+(f.low?1:0)+(f.birds?2:0)):-99,
   adj:{troll:f=>2},
   why:f=>["from the boat: cover lots of water",f.birds&&"birds working: troll around the edge, not through"]},
- {id:"bmscratch",title:"Scratch the bottom",zone:"bottom",lures:["bm"],head:"search",casts:"6–8 casts along channels",
+ {id:"bmscratch",title:"Scratch the bottom",zone:"bottom",lures:["bm","bm3"],head:"search",casts:"6–8 casts along channels",
   how:["Cast along a sand channel between rocks or the foot of a rock wall.","Let it touch down, rod low.","Wind very slowly so it just bumps along — weedless, so don't fear snags.","Heavy thump: wind fast and lift firmly."],
   score:f=>3+(f.sand?3:0)+(f.mixed?2:0)+((f.shallow||f.medium)?1:0)+(f.weed?1:0)+(f.rocks?1:0)-(f.deep?1:0)+(f.ub?1:0),
   why:f=>[f.sand&&"sand channels hold bottom feeders",f.mixed&&"weedless through mixed ground",f.ub&&"good way to learn the bottom"]},
- {id:"bmlift",title:"Soft-lure lift-and-drop",zone:"bottom",lures:["bm"],head:"offshore",casts:"6–8 casts",
+ {id:"bmlift",title:"Soft-lure lift-and-drop",zone:"bottom",lures:["bm","bm3"],head:"offshore",casts:"6–8 casts",
   how:["Let it hit the bottom.","Smooth lift of 1–1.5 m, then follow it down on a tight-ish line — the tail thumps on the fall.","Hits are a heavy knock on the drop.","Set the hook hard to pull it through the body."],
   score:f=>3+(f.deep?2:0)+(f.rocks?2:0)+(f.medium?1:0)-(f.shallow?2:0),
   why:f=>[f.rocks&&"weedless over rock",f.deep&&"40 g head reaches the bottom fast"]},
- {id:"bmswim",title:"Slow soft-lure swim",zone:"mid",lures:["bm"],head:"offshore",casts:"8 casts",
+ {id:"bmswim",title:"Slow soft-lure swim",zone:"mid",lures:["bm","bm3"],head:"offshore",casts:"8 casts",
   how:["Count it to mid-water.","Slow steady wind — just fast enough to feel the tail thump in the rod.","Every few metres, stop 1 s and let it sink a little."],
   score:f=>3+(f.murky?1:0)+(f.low?1:0)+(f.night?1:0)+(f.weed?1:0)+(f.rough?1:0),
   why:f=>[f.murky&&"tail vibration finds fish in coloured water",f.low&&"sea bass patrol rock edges in low light"]}
@@ -451,39 +503,42 @@ function pickColour(k,f,used){
   const top=best.tags.reduce((a,t)=>(w[t]||0)>(w[a]||0)?t:a,best.tags[0]);
   return {col:best,reason:TAGTXT[top]};
 }
-const WINDPENALTY=k=>INV[k].w<30&&!INV[k].headwind;
+const WINDPENALTY=(k,w)=>w<30&&!INV[k].headwind;
 
 /* session state */
 let S=null;
 function newSession(mode){S={mode,tried:{},used:{},hist:[],cur:null,step:0,start:Date.now()};wake();}
 const SLOW=["liftdrop","bmscratch","bmlift","bmswim","jwp"],SINK=["sinkmin","sneedle","jwp","liftdrop","bmlift","bmswim","burn"];
-function envAdj(t,k,f){
-  let d=0;const r=[],top=t.zone==="top"||t.id==="floatmin",light=INV[k].w<30;
+function envAdj(t,k,f,w){
+  if(w==null)w=lureW(t,k);
+  let d=0;const r=[],top=t.zone==="top"||t.id==="floatmin",light=w<30;
   if(f.rel==="off"){ if(top){d+=f.windy?2:1;r.push("wind at your back: calmer water close in and long casts with light lures");} if(light&&f.windy)d+=1; }
   if(f.rel==="cross"&&f.windy){ if(top||t.id==="wake"){d-=1;} if(SINK.includes(t.id)){d+=1;r.push("crosswind bows the line: a sinking lure keeps contact");} }
-  if(f.gusty){ if(light){d-=2;} if(t.zone==="top"){d-=1;} if(INV[k].w>=40){d+=1;r.push("gusty: heavy lure casts straight through the gusts");} }
+  if(f.gusty){ if(light){d-=2;} if(t.zone==="top"){d-=1;} if(w>=40){d+=1;r.push("gusty: heavy lure casts straight through the gusts");} }
   if(f.rising&&SINK.includes(t.id)&&t.id!=="liftdrop"){d+=1;r.push("wind is building: fish often switch on as the sea livens up");}
   if(f.easing&&t.zone==="top"){d+=1;r.push("wind is dropping: the surface is calming down");}
   if(f.cold){ if(SLOW.includes(t.id)){d+=2;r.push("cool sea: fish want it slow and deep");} if(t.id==="burn"||t.id==="pop"){d-=1;} }
   if(f.warm&&t.zone==="top"&&f.twi){d+=1;r.push("warm sea: surface feeding at first and last light");}
   return {d,r};
 }
-// Rod fit: Oceanic Team Viper 90H, rated 20–60 g
-const ROD={name:"Team Viper",min:20,max:60};
-function rodAdj(k){const w=INV[k].w;
-  if(w<ROD.min) return {d:-4,r:`under your rod's ${ROD.min}–${ROD.max} g range: short casts, so keep it close in`};
-  if(w<ROD.min+5) return {d:-1,r:""};
-  if(w>ROD.max) return {d:-4,r:`over your rod's ${ROD.max} g limit: lob it, don't whip it`};
-  if(w>ROD.max-5) return {d:-1,r:""};
+// Rod fit: scored against the casting range set under "My rod"
+function rodAdj(w){const R=store.rod;
+  if(w<R.min) return {d:-4,r:`under your rod's ${R.min}–${R.max} g range: short casts, so keep it close in`};
+  if(w<R.min+5) return {d:-1,r:""};
+  if(w>R.max*1.2) return {d:-99,r:""}; // too heavy: could break the rod, never suggested
+  if(w>R.max) return {d:-6-Math.round(w-R.max),r:`over your rod's ${R.max} g limit: lob it gently, don't whip it`};
+  if(w>R.max-5) return {d:-1,r:""};
   return {d:0,r:""};}
+const lureKeys=t=>t.lures.concat(Object.keys(INV).filter(k=>INV[k].techs&&INV[k].techs.includes(t.id)));
 function candidates(f){
   const out=[];
-  for(const t of T) for(const k of t.lures){
-    if(!avail(k).length) continue;
+  for(const t of T) for(const k of lureKeys(t)){
+    if(!INV[k]||!avail(k).length) continue;
+    const w=lureW(t,k);
     let s=t.score(f)+((t.adj&&t.adj[k])?t.adj[k](f):0);
-    if(f.rel==="on"&&f.windy&&WINDPENALTY(k)) s-=2;
-    if(f.gale&&INV[k].w<30) s-=2;
-    s+=envAdj(t,k,f).d+rodAdj(k).d;
+    if(f.rel==="on"&&f.windy&&WINDPENALTY(k,w)) s-=2;
+    if(f.gale&&w<30) s-=2;
+    s+=envAdj(t,k,f,w).d+rodAdj(w).d;
     out.push({t,k,s});
   }
   return out;
@@ -503,13 +558,14 @@ function nextSuggestion(mode){ // mode: "next" | "follow"
   return build(o.t,o.k,f,pickColour(o.k,f,S.used),[]);
 }
 function build(t,k,f,pc,extra){
+  const w=lureW(t,k);
   const reasons=[...extra,...t.why(f).filter(Boolean)];
   if(pc&&pc.reason) reasons.push(pc.reason);
-  if(f.rel==="on"&&f.windy&&INV[k].w>=35) reasons.push("heavy enough for the onshore wind");
-  reasons.splice(extra.length,0,...envAdj(t,k,f).r);
-  if(rodAdj(k).r) reasons.unshift(rodAdj(k).r);
-  const s={t,k,col:pc&&pc.col,reasons:[...new Set(reasons)].slice(0,4)};
-  if(INV[k].soft){ s.head=t.head==="search"?{n:"Search head 28 g",why:"rides tilted above the bottom — for scratching and snaggy shallows"}:{n:"Offshore head 40 g",why:"swims on the drop and the rise — for deeper water and lift-and-drop"}; }
+  if(f.rel==="on"&&f.windy&&w>=35) reasons.push("heavy enough for the onshore wind");
+  reasons.splice(extra.length,0,...envAdj(t,k,f,w).r);
+  if(rodAdj(w).r) reasons.unshift(rodAdj(w).r);
+  const s={t,k,w,col:pc&&pc.col,reasons:[...new Set(reasons)].slice(0,4)};
+  if(INV[k].soft){const hd=pickHead(k,t); if(hd) s.head={n:`${hd.type} head ${hd.w} g`,why:HEADWHY[hd.type]||""};}
   return s;
 }
 function takeSuggestion(s){S.cur=s;S.step++;const key=s.t.id+"/"+s.k;S.tried[key]=(S.tried[key]||0)+1;if(s.col)S.used[s.k+"|"+s.col.c]=(S.used[s.k+"|"+s.col.c]||0)+1;}
@@ -529,19 +585,21 @@ function egiColour(f,used){
   else if(f.twi||f.cloud){w.brt+=3;w.nat+=1;}
   else {w.nat+=3;}
   if(f.murky){w.brt+=3;w.nat-=1;}
-  let best=null,bs=-1e9;
-  for(const col of avail("egi")){const s=col.tags.reduce((a,t)=>a+(w[t]||0),0)-3*(used["egi|"+col.c]||0)+Math.random()*.1;if(s>bs){bs=s;best=col;}}
+  let best=null,bk=null,bs=-1e9;
+  for(const k of Object.keys(INV).filter(k=>INV[k].fam==="egi")) for(const col of avail(k)){const s=col.tags.reduce((a,t)=>a+(w[t]||0),0)+rodAdj(INV[k].w).d*.5-3*(used[k+"|"+col.c]||0)+Math.random()*.1;if(s>bs){bs=s;best=col;bk=k;}}
   const why=f.night?(dark?"dark night: light colour + glow, charge it with your torch":"moonlit night: natural colour, charge the glow"):(f.twi||f.cloud)?"low light: orange or pink shows best":f.murky?"coloured water: bright colour":"bright clear day: natural colour";
-  return {col:best,why};
+  return {k:bk,col:best,why};
 }
 function egiNext(colourChange){
   const f=feats();
   // new colour restarts the cadence cycle; otherwise move to the next cadence, new colour each full cycle
   const idx=(!S.cur||colourChange)?0:(S.egiIdx+1)%EGI_STEPS.length;
   const needColour=!S.cur||colourChange||idx===0;
-  const pc=needColour?egiColour(f,S.used):{col:S.cur.col,why:S.cur.why};
-  S.egiIdx=idx;S.step++;S.cur={egi:true,step:EGI_STEPS[idx],col:pc.col,why:pc.why};
-  if(needColour&&pc.col)S.used["egi|"+pc.col.c]=(S.used["egi|"+pc.col.c]||0)+1;
+  const pc=needColour?egiColour(f,S.used):{k:S.cur.k,col:S.cur.col,why:S.cur.why};
+  if(!pc.col) return false;
+  S.egiIdx=idx;S.step++;S.cur={egi:true,k:pc.k,step:EGI_STEPS[idx],col:pc.col,why:pc.why};
+  if(needColour)S.used[pc.k+"|"+pc.col.c]=(S.used[pc.k+"|"+pc.col.c]||0)+1;
+  return true;
 }
 
 /* ================= VIEWS ================= */
@@ -561,7 +619,7 @@ function vHome(){
    </div>
    ${resume?`<button class="btn ghost" id="resume" type="button">Back to my ${S.mode==="egi"?"eging":"fishing"} session · step ${S.step}</button>`:""}
    ${!WX&&LOC?`<div class="warn">No live weather right now. You can still fish — just set the light, wind and sea yourself on the next screen.</div>`:""}
-   <div class="links"><button class="btn ghost small" id="goBox" type="button">What I'm bringing (${bringCount()[0]})</button><button class="btn ghost small" id="goLog" type="button">Catch log (${store.log.length})</button></div>
+   <div class="links"><button class="btn ghost small" id="goBox" type="button">What I'm bringing (${bringCount()[0]})</button><button class="btn ghost small" id="goLog" type="button">Catch log (${store.log.length})</button><button class="btn ghost small" id="goRod" type="button">My rod: ${esc(store.rod.name)} · ${store.rod.min}–${store.rod.max} g</button><button class="btn ghost small" id="goAdd" type="button">+ Add a lure</button></div>
    <p class="note">Weather and waves from Open-Meteo, updated every 15 minutes. Location stays on this phone.</p>
   </section>`;
   app.querySelector(".bigbtn.a span").style.cssText="display:block;width:64px";
@@ -570,6 +628,8 @@ function vHome(){
   document.getElementById("goEgi").onclick=()=>show("egisetup");
   document.getElementById("goBox").onclick=()=>show("box");
   document.getElementById("goLog").onclick=()=>show("log");
+  document.getElementById("goRod").onclick=()=>show("rod");
+  document.getElementById("goAdd").onclick=()=>openLureForm(null);
   if(resume) document.getElementById("resume").onclick=()=>show(S.mode==="egi"?"egi":"session");
 }
 function vWhere(){
@@ -590,11 +650,12 @@ function vSetup(){
   autoFill();
   app.innerHTML=`<section class="screen"><h2>What's the spot like?</h2>
    <p class="note">Weather already filled in what it can. Change anything that's wrong — the rest is up to your eyes.</p>
-   <button class="btn ghost small" id="pack" type="button">Packed: ${bringCount()[0]} lures — change</button>
+   <div class="row"><button class="btn ghost small" id="pack" type="button">Packed: ${bringCount()[0]} lures</button><button class="btn ghost small" id="rodb" type="button">Rod: ${store.rod.min}–${store.rod.max} g</button></div>
    <div class="card" style="display:flex;flex-direction:column;gap:16px">${SELECTORS.map(selHTML).join("")}</div>
    <button class="btn primary" id="go" type="button">Give me my first lure</button></section>`;
   bindChips(app);
   document.getElementById("pack").onclick=()=>show("box");
+  document.getElementById("rodb").onclick=()=>{RETURN="setup";show("rod");};
   document.getElementById("go").onclick=()=>{newSession("fish");const s=nextSuggestion("next");if(!s){toast("Nothing packed for this spot — switch some lures on",true);return;}takeSuggestion(s);show("session");};
 }
 function depthBar(z){return `<div class="depthbar" aria-label="Depth: ${ZNAME[z]}">${ZONES[z].map(o=>`<i class="${o?"on":""}"></i>`).join("")}</div>`;}
@@ -611,9 +672,9 @@ function vSession(){
    </div>
    <article class="sug">
      <div class="hd"><span class="step">STEP ${S.step} · ${Math.round((Date.now()-S.start)/60000)} MIN IN</span><span class="zone">${ZNAME[s.t.zone]}</span></div>
-     <div class="lureart">${lureSVG(L.fam,s.col.sw,true,s.col.pat)}</div>
+     <div class="lureart">${lureSVG(L.fam,s.col.sw,true,s.col.pat,s.col.head)}</div>
      <div class="bd">
-       <div><div class="lname">${esc(L.name)}</div><div class="lmaker">${esc(L.maker)} · ${L.w} g · ${L.len} mm${L.buoy?" · "+L.buoy:""}</div></div>
+       <div><div class="lname">${esc(L.name)}</div><div class="lmaker">${esc(L.maker)} · ${s.w} g${L.soft?" rigged":""} · ${L.len} mm${L.buoy?" · "+L.buoy:""}</div></div>
        <div class="colour"><span class="sw" style="${swStyle(s.col.sw)}"></span><span><b>${s.head?"Body: ":""}${esc(s.col.c)}</b><small>${s.col.n>1?s.col.n+" in your box":"1 in your box"}</small></span></div>
        ${s.head?`<div class="colour"><span class="sw" style="background:#6b6a3a"></span><span><b>${s.head.n}</b><small>${s.head.why}</small></span></div>`:""}
        <div style="display:flex;gap:12px;align-items:flex-start">${depthBar(s.t.zone)}<div style="flex:1;min-width:0"><div class="tech">${esc(s.t.title)}</div><ol class="how">${how.map(h=>`<li>${esc(h)}</li>`).join("")}</ol></div></div>
@@ -654,15 +715,16 @@ function vEgiSetup(){
    <div class="card" style="display:flex;flex-direction:column;gap:16px">${egiSel.map(selHTML).join("")}</div>
    <button class="btn primary" id="go" type="button">Pick my squid jig</button></section>`;
   bindChips(app);
-  document.getElementById("go").onclick=()=>{newSession("egi");S.egiIdx=0;S.cur=null;egiNext(false);show("egi");};
+  document.getElementById("go").onclick=()=>{newSession("egi");S.egiIdx=0;S.cur=null;if(!egiNext(false)){toast("No squid jigs packed — switch some on in What I'm bringing",true);return;}show("egi");};
 }
 function vEgi(){
   const c=S.cur,st=c.step;
   app.innerHTML=`<section class="screen">
    <article class="sug">
-    <div class="hd"><span class="step">STEP ${S.step} · ${Math.round((Date.now()-S.start)/60000)} MIN IN</span><span class="zone">EGI 3.5#</span></div>
-    <div class="lureart">${lureSVG("egi",c.col.sw,true,c.col.pat)}</div>
+    <div class="hd"><span class="step">STEP ${S.step} · ${Math.round((Date.now()-S.start)/60000)} MIN IN</span><span class="zone">SQUID JIG</span></div>
+    <div class="lureart">${lureSVG("egi",c.col.sw,true,c.col.pat,c.col.head)}</div>
     <div class="bd">
+     <div><div class="lname">${esc(INV[c.k].name)}</div><div class="lmaker">${esc(INV[c.k].maker)} · ${INV[c.k].w} g · ${INV[c.k].len} mm</div></div>
      <div class="colour"><span class="sw" style="${swStyle(c.col.sw)}"></span><span><b>${esc(c.col.c)}</b><small>${esc(c.why)}</small></span></div>
      <div class="tech">${esc(st.title)}</div>
      <ol class="how">${st.how.map(h=>`<li>${esc(h)}</li>`).join("")}</ol>
@@ -678,22 +740,138 @@ function vEgi(){
   const push=()=>S.hist.push({sw:c.col.sw,txt:`${c.col.c} · ${st.title}`});
   document.getElementById("next").onclick=()=>{push();egiNext(false);show("egi");};
   document.getElementById("col").onclick=()=>{push();egiNext(true);show("egi");};
-  document.getElementById("on").onclick=()=>{logCatch("Squid jig 3.5#",c.col.c,st.title);toast("Logged! Squid travel in groups — cast straight back to the same spot.");};
+  document.getElementById("on").onclick=()=>{logCatch(INV[c.k].name,c.col.c,st.title);toast("Logged! Squid travel in groups — cast straight back to the same spot.");};
 }
 function vBox(){
   const groups={};for(const k in INV){(groups[INV[k].fam]=groups[INV[k].fam]||[]).push(k);}
   const [a,t]=bringCount();
+  const row=(k,col)=>{const L=INV[k],id=k+"|"+col.c,on=!store.off.includes(id);
+    const note=L.soft&&!rigOK(k)?`<small class="needs">Won't be suggested until a ${L.size} head and ${L.size} hooks are packed (below)</small>`:L.boat?`<small>Only suggested when "Fishing from: Boat"</small>`:"";
+    const wt=L.soft?`body ~${L.bodyW} g + head`:`${L.w} g`;
+    return `<div class="boxrow${on?"":" lost"}"><span class="mini">${lureSVG(L.fam,col.sw,false,col.pat,col.head)}</span><span class="txt"><b>${esc(L.name)}</b><small>${esc(col.c)}${col.n>1?" ×"+col.n:""} · ${wt} · ${L.len} mm</small>${note}${L.custom?`<button type="button" class="linkbtn" data-edit="${k}">Edit my lure</button>`:""}</span><input type="checkbox" class="tg" data-id="${esc(id)}" ${on?"checked":""} aria-label="Bring ${esc(L.name)} ${esc(col.c)}"></div>`;};
+  const partRow=p=>{const on=!store.off.includes("part|"+p.id);
+    return `<div class="boxrow${on&&p.qty>0?"":" lost"}"><span class="txt"><b>${p.size} ${p.kind==="head"?`${p.type} head ${p.w} g`:"hooks"}</b><small>${p.note?esc(p.note):p.kind==="head"?esc(HEADWHY[p.type]||""):"Needed to rig any "+p.size+" body"}</small>
+      <span class="qty"><button type="button" class="chip" data-pq="${p.id}" data-d="-1" aria-label="One less">−</button><b>${p.qty}</b><button type="button" class="chip" data-pq="${p.id}" data-d="1" aria-label="One more">+</button>${p.id.startsWith("u")?`<button type="button" class="linkbtn" data-pdel="${p.id}">Remove</button>`:""}</span></span>
+      <input type="checkbox" class="tg" data-id="part|${p.id}" ${on?"checked":""} aria-label="Bring ${p.size} ${p.kind}"></div>`;};
   app.innerHTML=`<section class="screen"><h2>What I'm bringing</h2>
    <p class="note">Switch off anything that stays at home (or is lost). LureCast only suggests what's switched on. <b>${a} of ${t}</b> lures packed.</p>
    <div class="row"><button class="btn ghost small" id="allOn" type="button">Bring everything</button><button class="btn ghost small" id="allOff" type="button">Empty the bag</button></div>
-   ${Object.keys(FAMNAME).filter(f=>groups[f]).map(f=>`<div class="sel"><div class="lbl"><h3>${FAMNAME[f]}</h3><span class="row" style="flex:none;gap:6px"><button type="button" class="chip" data-fam="${f}" data-on="1">All</button><button type="button" class="chip" data-fam="${f}" data-on="0">None</button></span></div><div class="boxlist">${groups[f].flatMap(k=>INV[k].cols.map(col=>{const id=k+"|"+col.c,on=!store.off.includes(id),dis=!!INV[k].noHead;return `<label class="boxrow${on&&!dis?"":" lost"}"><span class="mini">${lureSVG(INV[k].fam,col.sw,false,col.pat)}</span><span class="txt"><b>${esc(INV[k].name)}</b><small>${esc(col.c)}${col.n>1?" ×"+col.n:""} · ${INV[k].w} g · ${INV[k].len} mm</small>${dis?`<small>Needs No3 heads and hooks before it can be fished</small>`:INV[k].boat?`<small>Only suggested when "Fishing from: Boat"</small>`:""}</span><input type="checkbox" class="tg" data-id="${esc(id)}" ${on?"checked":""} ${dis?"disabled":""} aria-label="Bring ${esc(INV[k].name)} ${esc(col.c)}"></label>`})).join("")}</div></div>`).join("")}
-   <div class="card"><h3>Soft-lure spares</h3><div class="kv" style="margin-top:8px">${SPARES.map(([n,q])=>`<dt>${n}</dt><dd>×${q}</dd>`).join("")}</div></div>
+   <button class="btn sea small" id="addL" type="button">+ Add a lure</button>
+   ${Object.keys(FAMNAME).filter(f=>groups[f]).map(f=>`<div class="sel"><div class="lbl"><h3>${FAMNAME[f]}</h3><span class="row" style="flex:none;gap:6px"><button type="button" class="chip" data-fam="${f}" data-on="1">All</button><button type="button" class="chip" data-fam="${f}" data-on="0">None</button></span></div><div class="boxlist">${groups[f].flatMap(k=>INV[k].cols.map(col=>row(k,col))).join("")}</div>
+     ${f==="soft"?`<h3 style="margin-top:6px">Heads and hooks</h3><p class="note">Bodies are rigged with what you pack here. Set how many you have; 0 counts as none.</p><div class="boxlist">${store.parts.map(partRow).join("")}</div>
+       <details class="card"><summary><b>Add heads or hooks</b></summary><div class="form" style="margin-top:10px">
+         <label>Size<select id="pSize"><option>No3</option><option>No4</option><option>No2.5</option><option>No2</option><option>No1</option></select></label>
+         <label>Part<select id="pKind"><option value="head">Jig head</option><option value="hooks">Hooks</option></select></label>
+         <label id="pTypeL">Head type<select id="pType">${HEADTYPES.map(x=>`<option>${x}</option>`).join("")}</select></label>
+         <label id="pWL">Head weight (g)<input id="pW" type="number" inputmode="decimal" min="1" max="200" value="25"></label>
+         <label>How many<input id="pQ" type="number" inputmode="numeric" min="1" max="99" value="2"></label>
+         <button class="btn primary small" id="pAdd" type="button">Add</button></div></details>`:""}</div>`).join("")}
   </section>`;
-  app.querySelectorAll(".tg").forEach(cb=>cb.onchange=()=>{const id=cb.dataset.id,i=store.off.indexOf(id);if(cb.checked&&i>=0)store.off.splice(i,1);if(!cb.checked&&i<0)store.off.push(id);save();const y=scrollY;vBox();scrollTo(0,y);});
-  const setFam=(f,on)=>{for(const k of groups[f])for(const c of INV[k].cols){const id=k+"|"+c.c,i=store.off.indexOf(id);if(on&&i>=0)store.off.splice(i,1);if(!on&&i<0)store.off.push(id);}save();const y=scrollY;vBox();scrollTo(0,y);};
+  const keep=()=>{const y=scrollY;vBox();scrollTo(0,y);};
+  app.querySelectorAll(".tg").forEach(cb=>cb.onchange=()=>{const id=cb.dataset.id,i=store.off.indexOf(id);if(cb.checked&&i>=0)store.off.splice(i,1);if(!cb.checked&&i<0)store.off.push(id);save();keep();});
+  const setFam=(f,on)=>{for(const k of groups[f])for(const c of INV[k].cols){const id=k+"|"+c.c,i=store.off.indexOf(id);if(on&&i>=0)store.off.splice(i,1);if(!on&&i<0)store.off.push(id);}save();keep();};
   app.querySelectorAll("[data-fam]").forEach(b=>b.onclick=()=>setFam(b.dataset.fam,b.dataset.on==="1"));
+  app.querySelectorAll("[data-pq]").forEach(b=>b.onclick=()=>{const p=store.parts.find(x=>x.id===b.dataset.pq);p.qty=Math.max(0,p.qty+ +b.dataset.d);save();keep();});
+  app.querySelectorAll("[data-pdel]").forEach(b=>b.onclick=()=>{store.parts=store.parts.filter(x=>x.id!==b.dataset.pdel);save();keep();});
+  app.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>openLureForm(b.dataset.edit));
+  document.getElementById("addL").onclick=()=>openLureForm(null);
+  const pk=document.getElementById("pKind");
+  if(pk){const sync=()=>{const hd=pk.value==="head";document.getElementById("pTypeL").hidden=!hd;document.getElementById("pWL").hidden=!hd;};pk.onchange=sync;sync();
+    document.getElementById("pAdd").onclick=()=>{const size=document.getElementById("pSize").value,kind=pk.value,type=document.getElementById("pType").value,w=+document.getElementById("pW").value,qty=Math.max(1,+document.getElementById("pQ").value||1);
+      if(kind==="head"&&!(w>0)){toast("Enter the head weight in grams",true);return;}
+      const same=store.parts.find(p=>p.size===size&&p.kind===kind&&(kind==="hooks"||(p.type===type&&p.w===w)));
+      if(same)same.qty+=qty;else store.parts.push(kind==="head"?{id:"u"+Date.now(),size,kind,type,w,qty}:{id:"u"+Date.now(),size,kind,qty});
+      save();toast(`Added ${qty} × ${size} ${kind==="head"?type+" head "+w+" g":"hooks"}`);keep();};}
   document.getElementById("allOn").onclick=()=>{store.off=[];save();vBox();};
-  document.getElementById("allOff").onclick=()=>{store.off=[];for(const k in INV)for(const c of INV[k].cols)store.off.push(k+"|"+c.c);save();vBox();};
+  document.getElementById("allOff").onclick=()=>{store.off=store.off.filter(x=>x.startsWith("part|"));for(const k in INV)for(const c of INV[k].cols)store.off.push(k+"|"+c.c);save();vBox();};
+}
+
+/* ----- My rod ----- */
+let RETURN="home";
+function vRod(){
+  const R=store.rod;
+  app.innerHTML=`<section class="screen"><h2>My rod</h2>
+   <p class="note">Suggestions are scored against your rod's casting weight. Lures under the range drop down the list (short casts). Lures over it drop a lot, and anything more than 20% over is never suggested, so you don't risk the rod. Lures within 5 g of either end drop a little.</p>
+   <div class="card form">
+     <label>Rod name<input id="rName" type="text" value="${esc(R.name)}" maxlength="40"></label>
+     <div class="row"><label>Casting weight from (g)<input id="rMin" type="number" inputmode="decimal" min="1" max="300" value="${R.min}"></label><label>to (g)<input id="rMax" type="number" inputmode="decimal" min="1" max="400" value="${R.max}"></label></div>
+     <p class="note">It's printed on the rod above the handle, for example "20–60 g" or "CW 10–30 g".</p>
+     <button class="btn primary" id="rSave" type="button">Save rod</button>
+   </div>
+   <div class="card"><h3>Quick picks</h3><div class="chips" style="margin-top:8px">
+     ${[["Team Viper 90H",20,60],["Light spinning",7,28],["Medium spinning",10,40],["Heavy shore jigging",40,100]].map(([n,a,b])=>`<button type="button" class="chip" data-r="${esc(n)}|${a}|${b}">${esc(n)} · ${a}–${b} g</button>`).join("")}</div></div>
+  </section>`;
+  app.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{const [n,a,c]=b.dataset.r.split("|");document.getElementById("rName").value=n;document.getElementById("rMin").value=a;document.getElementById("rMax").value=c;});
+  document.getElementById("rSave").onclick=()=>{const name=document.getElementById("rName").value.trim()||"My rod",min=+document.getElementById("rMin").value,max=+document.getElementById("rMax").value;
+    if(!(min>0&&max>min)){toast("The second number must be bigger than the first",true);return;}
+    store.rod={name,min,max};save();toast(`Saved: ${name}, ${min}–${max} g`);const r=RETURN;RETURN="home";show(r);};
+}
+
+/* ----- Add / edit my own lure ----- */
+let FORM=null;
+const hexLum=x=>{const n=parseInt(x.slice(1),16),r=(n>>16&255)/255,g=(n>>8&255)/255,b=(n&255)/255;return {l:.2126*r+.7152*g+.0722*b,s:Math.max(r,g,b)-Math.min(r,g,b)};};
+function autoTags(c){
+  if(c.style&&c.style!=="auto") return [c.style].concat(c.glow?["glo"]:[]);
+  const b=hexLum(c.back),t=[];
+  if(c.head) t.push("ctr");
+  if(b.l<.18) t.push("drk"); else if(b.s>.45&&b.l>.35) t.push("brt"); else t.push("nat");
+  if(c.glow) t.push("glo");
+  return t;}
+const STYLE_TXT={auto:"Work it out from the colours",nat:"Natural (silver, sardine, green, blue)",brt:"Bright (pink, chartreuse, orange)",drk:"Dark (black, dark blue)",ctr:"High contrast (red or yellow head)"};
+function openLureForm(key){
+  if(key&&store.custom.find(c=>c.key===key)){const c=JSON.parse(JSON.stringify(store.custom.find(c=>c.key===key)));FORM={...c,editing:true};}
+  else FORM={key:null,name:"",maker:"",type:"floatmin",w:"",len:"",cols:[],editing:false};
+  FORM.cur={c:"",back:"#2b5fae",belly:"#e8ecef",head:"",pat:"",style:"auto",glow:false,n:1};
+  show("lureform");
+}
+function vLureForm(){
+  const F=FORM,c=F.cur,T=TYPES[F.type];
+  const typeOpts=Object.entries(TYPES).map(([k,v])=>`<option value="${k}" ${k===F.type?"selected":""}>${v.label}</option>`).join("");
+  app.innerHTML=`<section class="screen"><h2>${F.editing?"Edit my lure":"Add a lure"}</h2>
+   <div class="card form">
+     <label>Name<input id="fName" type="text" maxlength="50" placeholder="e.g. X-Rap Saltwater 14" value="${esc(F.name)}"></label>
+     <label>Maker<input id="fMaker" type="text" maxlength="40" placeholder="optional" value="${esc(F.maker)}"></label>
+     <label>Type<select id="fType">${typeOpts}</select></label>
+     <p class="note" id="fTypeNote">${T.techs.length?"Gets suggested for: "+T.techs.map(id=>(T_BY_ID[id]||{}).title).filter(Boolean).join(", "):"Gets suggested when you start eging"}</p>
+     <div class="row"><label>Weight (g)<input id="fW" type="number" inputmode="decimal" min="1" max="300" value="${esc(F.w)}"></label><label>Length (mm)<input id="fLen" type="number" inputmode="numeric" min="10" max="400" value="${esc(F.len)}"></label></div>
+   </div>
+   <div class="card form"><h3>Colours</h3>
+     ${F.cols.length?`<div class="boxlist">${F.cols.map((x,i)=>`<div class="boxrow"><span class="mini">${lureSVG(T.fam,[x.back,x.belly],false,x.pat,x.head)}</span><span class="txt"><b>${esc(x.c)}</b><small>×${x.n} · ${x.tags.map(t=>({nat:"natural",brt:"bright",drk:"dark",ctr:"contrast",glo:"glows"})[t]).join(", ")}</small></span><button type="button" class="linkbtn" data-rmc="${i}">Remove</button></div>`).join("")}</div>`:`<p class="note">Design a colour below and tap "Add this colour". Add as many colours as you own.</p>`}
+     <div class="lureart" id="prev">${lureSVG(T.fam,[c.back,c.belly],true,c.pat,c.head)}</div>
+     <label>Colour name<input id="cName" type="text" maxlength="50" placeholder="e.g. Red head, silver" value="${esc(c.c)}"></label>
+     <div class="row pickers"><label>Back<input id="cBack" type="color" value="${c.back}"></label><label>Belly<input id="cBelly" type="color" value="${c.belly}"></label><label>Head<input id="cHead" type="color" value="${c.head||"#d8282a"}" ${c.head?"":"disabled"}></label></div>
+     <label class="check"><input id="cHeadOn" type="checkbox" ${c.head?"checked":""}> Different colour head (red head, yellow head…)</label>
+     <label>Pattern<select id="cPat"><option value="">Plain</option><option value="stripes" ${c.pat==="stripes"?"selected":""}>Stripes</option><option value="spots" ${c.pat==="spots"?"selected":""}>Spots</option><option value="bars" ${c.pat==="bars"?"selected":""}>Bars</option></select></label>
+     <label>Colour style<select id="cStyle">${Object.entries(STYLE_TXT).map(([k,v])=>`<option value="${k}" ${c.style===k?"selected":""}>${v}</option>`).join("")}</select></label>
+     <label class="check"><input id="cGlow" type="checkbox" ${c.glow?"checked":""}> Glows (luminous)</label>
+     <label>How many in this colour<input id="cN" type="number" inputmode="numeric" min="1" max="20" value="${c.n}"></label>
+     <button class="btn sea small" id="cAdd" type="button">Add this colour</button>
+   </div>
+   <button class="btn primary" id="fSave" type="button">${F.editing?"Save changes":"Save lure"}</button>
+   ${F.editing?`<button class="btn ghost small" id="fDel" type="button">Delete this lure</button><div id="sure"></div>`:""}
+  </section>`;
+  const $=id=>document.getElementById(id);
+  const readTop=()=>{F.name=$("fName").value;F.maker=$("fMaker").value;F.w=$("fW").value;F.len=$("fLen").value;};
+  const readCol=()=>{c.c=$("cName").value;c.back=$("cBack").value;c.belly=$("cBelly").value;c.head=$("cHeadOn").checked?$("cHead").value:"";c.pat=$("cPat").value;c.style=$("cStyle").value;c.glow=$("cGlow").checked;c.n=Math.max(1,+$("cN").value||1);
+    $("cHead").disabled=!$("cHeadOn").checked;$("prev").innerHTML=lureSVG(TYPES[F.type].fam,[c.back,c.belly],true,c.pat,c.head);};
+  ["fName","fMaker","fW","fLen"].forEach(id=>$(id).oninput=readTop);
+  ["cName","cBack","cBelly","cHead","cHeadOn","cPat","cStyle","cGlow","cN"].forEach(id=>{$(id).oninput=readCol;$(id).onchange=readCol;});
+  $("fType").onchange=()=>{readTop();readCol();F.type=$("fType").value;const y=scrollY;vLureForm();scrollTo(0,y);};
+  const addCol=()=>{readCol();if(!c.c.trim()){toast("Give the colour a name",true);return false;}
+    F.cols.push({c:c.c.trim(),back:c.back,belly:c.belly,head:c.head,pat:c.pat,tags:autoTags(c),n:c.n});F.cur={...c,c:""};return true;};
+  $("cAdd").onclick=()=>{readTop();if(addCol()){const y=scrollY;vLureForm();scrollTo(0,y);toast("Colour added");}};
+  app.querySelectorAll("[data-rmc]").forEach(b=>b.onclick=()=>{readTop();F.cols.splice(+b.dataset.rmc,1);const y=scrollY;vLureForm();scrollTo(0,y);});
+  $("fSave").onclick=()=>{readTop();
+    if(!F.name.trim()){toast("Give the lure a name",true);return;}
+    if(!(+F.w>0)){toast("Enter the weight in grams",true);return;}
+    if(!(+F.len>0)){toast("Enter the length in mm",true);return;}
+    if(!F.cols.length&&!(c.c.trim()&&addCol())){toast("Add at least one colour",true);return;}
+    const rec={key:F.key||("c"+Date.now()),name:F.name.trim(),maker:F.maker.trim(),type:F.type,w:+F.w,len:+F.len,cols:F.cols};
+    const i=store.custom.findIndex(x=>x.key===rec.key);if(i>=0)store.custom[i]=rec;else store.custom.push(rec);
+    INV[rec.key]=fromCustom(rec);save();toast(`${rec.name} saved and packed`);FORM=null;show("box");};
+  if($("fDel"))$("fDel").onclick=()=>{$("sure").innerHTML=`<div class="row"><button class="btn ghost small" id="no" type="button">Keep it</button><button class="btn small" style="background:var(--bad);color:#fff" id="yes" type="button">Delete</button></div>`;
+    $("no").onclick=()=>{$("sure").innerHTML="";};
+    $("yes").onclick=()=>{store.custom=store.custom.filter(x=>x.key!==F.key);store.off=store.off.filter(x=>!x.startsWith(F.key+"|"));delete INV[F.key];save();toast("Lure deleted");FORM=null;show("box");};};
 }
 function vLog(){
   app.innerHTML=`<section class="screen"><h2>Catch log</h2>
@@ -713,7 +891,8 @@ let lock=null;async function wake(){try{lock=await navigator.wakeLock.request("s
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&S)wake();});
 
 /* routes needing the extra view */
-const _rr=rerender;rerender=function(){if(view==="setup2")return vSetup2();_rr();};
+const T_BY_ID=Object.fromEntries(T.map(t=>[t.id,t]));
+const _rr=rerender;rerender=function(){if(view==="setup2")return vSetup2();if(view==="rod")return vRod();if(view==="lureform")return FORM?vLureForm():(view="box",vBox());_rr();};
 
 /* boot */
 renderWX();show("home");
